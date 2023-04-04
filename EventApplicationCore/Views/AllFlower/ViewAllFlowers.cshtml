@@ -8,7 +8,22 @@
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
 
 <div class="container">
-    <br />
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Flower</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <div class="float-sm-right">
+                        @Html.ActionLink("Create","Add","Flower",new{},new {@class="btn btn-primary"})
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
     <div style="width:90%; margin:0 auto;">
 
         <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
