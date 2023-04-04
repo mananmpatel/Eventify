@@ -97,35 +97,40 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                        <!-- Dashboard -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                         <!-- Venue -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Venue" asp-action="Add">
-                                <p>Add Venue</p>
+                            <a class="nav-link" asp-controller="AllVenue" asp-action="ViewAllVenues">
+                                <p>Venue</p>
                             </a>
                         </li>
                         <!-- Equipment -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Equipment" asp-action="Add">
-                                <p>Add Equipments</p>
+                            <a class="nav-link" asp-controller="AllEquipment" asp-action="ViewAllEquipments">
+                                <p>Equipment</p>
                             </a>
                         </li>
                         <!-- Food -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Food" asp-action="Add">
-                                <p>Add Food</p>
+                            <a class="nav-link" asp-controller="AllFood" asp-action="ViewAllFoods">
+                                <p>Food</p>
                             </a>
                         </li>
                         <!-- Light -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Light" asp-action="Add">
-                                <p>Add Light</p>
+                            <a class="nav-link" asp-controller="AllLight" asp-action="ViewAllLights">
+                                <p>Light</p>
                             </a>
                         </li>
                         <!-- Flower -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Flower" asp-action="Add">
-                                <p>Add Flower</p>
+                            <a class="nav-link" asp-controller="AllFlower" asp-action="ViewAllFlowers">
+                                <p>Flower</p>
                             </a>
                         </li>
                         <!-- Bookings Approvals -->
