@@ -2,7 +2,20 @@
 @{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
-
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row mx-4">
+        <div class="col-sm-6">
+            <h3 class="m-0">Add Food Item</h3>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            @*<div class="float-sm-right">
+            @Html.ActionLink("Create","Add","Venue",new{},new {@class="btn btn-primary"})
+            </div>*@
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div>
+<!-- /.content-header -->
 <div class="container">
     @if (TempData["FoodMessage"] != null)
     {
@@ -12,7 +25,7 @@
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
         <div class="col-xs-offset-0 col-xs-4">
-            <h3><span class="label label-info">Add Food Item</span></h3>
+            @*<h3><span class="label label-info">Add Food Item</span></h3>*@
             <div class="form-group">
                 <label class="control-label" asp-for="FoodType">Food Type</label>
                 <input asp-for="FoodType" id="FoodType1" value="1" type="radio" />
@@ -54,9 +67,7 @@
             </div>
             <div class="form-actions">
                 <input type="submit" class="btn btn-success" value="Add New Food" />
-            </div>
-            <div class="form-actions">
-                <a href="/AllFood/ViewAllFoods">Show All Food</a>
+                <a href="/AllFood/ViewAllFoods" class="btn btn-danger">Cancel</a>
             </div>
         </div>
     </form>

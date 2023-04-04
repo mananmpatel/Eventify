@@ -3,7 +3,21 @@
 @{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
-
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mx-4">
+            <div class="col-sm-6">
+                <h3 class="m-0">Edit Flower</h3>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <div class="float-sm-right">
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 <div class="container">
     @if (TempData["FlowerUpdateMessage"] != null)
     {
@@ -15,7 +29,7 @@
             <input asp-for="FlowerID" type="hidden" />
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
-            <h3><span class="label label-info">Edit Flower</span></h3>
+            @*<h3><span class="label label-info">Edit Flower</span></h3>*@
 
             <div class="form-group">
                 <label class="control-label" asp-for="FlowerName">Flower Name</label>
@@ -42,13 +56,8 @@
 
             <div class="form-actions">
                 <input id="Submit" type="submit" class="btn btn-success" value="Update" />
+                <a href="/AllFlower/ViewAllFlowers" class="btn btn-danger">Cancel</a>
             </div>
-
-            <div class="form-actions">
-                <a href="/AllFlower/ViewAllFlowers">Show All Flowers</a>
-
-            </div>
-
         </div>
     </form>
 

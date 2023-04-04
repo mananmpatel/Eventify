@@ -3,18 +3,30 @@
 @{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
-
-<div class="container">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="row">
+        <div class="col-sm-6 p-0">
+            <h3 class="m-0">Add Venue</h3>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            @*<div class="float-sm-right">
+            @Html.ActionLink("Create","Add","Venue",new{},new {@class="btn btn-primary"})
+            </div>*@
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div>
+<!-- /.content-header -->
+<div class="container-body">
     @if (TempData["VenueMessage"] != null)
     {
         <p class="alert alert-success" id="successMessage">@TempData["VenueMessage"]</p>
     }
-
     <form method="post" enctype="multipart/form-data" asp-controller="Venue" asp-action="Add">
         <div class="col-xs-offset-0 col-xs-4">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
-            <h3><span class="label label-info">Add Venue</span></h3>
+            @*<h3><span class="label label-info">Add Venue</span></h3>*@
 
             <div class="form-group">
                 <label class="control-label" asp-for="VenueName">Venue Name</label>
@@ -35,12 +47,8 @@
 
             <div class="form-actions">
                 <input id="Submit1" type="submit" class="btn btn-success" value="Add New Venue" />
+                <a href="/AllVenue/ViewAllVenues" class="btn btn-danger">Cancel</a>
             </div>
-
-            <div class="form-actions">
-                <a href="/AllVenue/ViewAllVenues">Show All Venue</a>
-            </div>
-
         </div>
     </form>
 
