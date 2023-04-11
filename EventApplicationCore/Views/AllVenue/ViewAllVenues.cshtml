@@ -103,9 +103,13 @@
                                 //    "data": null, "render": function (data, type, full, meta) {
                                 //        return meta.row + 1;
                                 //    }
-                                //},
-                                //{"data": null,"render": function(data,type,meta){ return row.index() }},
-                                { "data": "VenueID", "name": "VenueID", "autoWidth": true },
+                            //}, ,"render": function(data,type,meta){ return row.index() }
+                            {
+                                "data": null, "name": "VenueID", "render": function (data, type, row, meta) {
+                                    return meta.row + meta.settings._iDisplayStart + 1;
+                                }
+                            },
+                                //{ "data": "VenueID", "name": "VenueID", "autoWidth": true },
                                 { "data": "VenueName", "name": "VenueName", "autoWidth": true },
                                 { "data": "VenueCost", "name": "VenueCost", "autoWidth": true },
                                 {
