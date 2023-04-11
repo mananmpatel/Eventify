@@ -89,6 +89,12 @@
                                     "searchable": false
                                 }],
                             "aoColumnDefs": [{
+                                    "aTargets":[3],
+                                    "render": function (data, type, row, meta) {
+                                        return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+                                    }
+                                },
+                                {
                                 "bSortable": false,
                                 "aTargets": [4, 5]
                             }],
