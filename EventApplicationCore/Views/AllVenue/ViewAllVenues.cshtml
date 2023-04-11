@@ -7,9 +7,9 @@
 
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-
-<!-- Content Header (Page header) -->
+@*<!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
         <div class="row">
@@ -24,102 +24,142 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
-<!-- /.content-header -->
+<!-- /.content-header -->*@
+<div class="content-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="@Url.Action("ViewAllVenues","AllVenue")" class="nav-link"><strong>Venue</strong></a>
+            </li>
+        </ul>
 
-<div class="container">
-    <div style="width:100%; margin:0 auto;">
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="@Url.Action("Add","Venue")" class="btn btn-primary" title="Add" style="margin-right:17px;"><i class="fa fa-plus"></i><span class="p-2">Add</span></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div class="container-fluid pt-3">
+            @if (TempData["VenueUpdateMessage"] != null || TempData["VenueMessage"] != null)
+            {
+                <p class="alert alert-success" id="successMessage">@TempData["VenueUpdateMessage"]@TempData["VenueMessage"]</p>
+            }
+            @*<div class="container">*@
+            <div style="width:100%; margin:0 auto;">
 
-        <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Sr. No.</th>
-                    <th>Venue Name</th>
-                    <th>Venue Cost</th>
-                    <th>Create date</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+                <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Venue Name</th>
+                            <th>Venue Cost</th>
+                            <th>Created date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-    @section Scripts{
-    <script>
+            @section Scripts{
+                <script>
         $(document).ready(function ()
         {
-            $("#myTable").DataTable({
-                "processing": true, // for show progress bar
-                "serverSide": true, // for process server side
-                "filter": true, // this is for disable filter (search box)
-                "orderMulti": false, // for disable multiple column at once
-                "ajax": {
-                    "url": "/AllVenue/LoadVenuesData",
-                    "type": "POST",
-                    "datatype": "json"
-                },
-                "columnDefs":
-                [{
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }],
-                "aoColumnDefs": [{
-                    "bSortable": false,
-                    "aTargets": [4,5]
-                }],
-                "columns": [
-                    { "data": "VenueID", "name": "VenueID", "autoWidth": true },
-                    { "data": "VenueName", "name": "VenueName", "autoWidth": true },
-                    { "data": "VenueCost", "name": "VenueCost", "autoWidth": true },
-                    { "data": "Createdate", "name": "Createdate", "autoWidth": true },
-                    {
-                        "render": function (data, type, full, meta)
-                        { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
-                    },
-                    {
-                        data: null, render: function (data, type, row)
-                        {
-                                return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.VenueID + "'); ><i class='fa fa-trash'></i></a>";
-                        }
-                    },
-                ]
+                        $("#myTable").DataTable({
+                            "processing": true, // for show progress bar
+                            "serverSide": true, // for process server side
+                            "filter": true, // this is for disable filter (search box)
+                            "orderMulti": false, // for disable multiple column at once
+                            "ajax": {
+                                "url": "/AllVenue/LoadVenuesData",
+                                "type": "POST",
+                                "datatype": "json"
+                            },
+                            "columnDefs":
+                                [{
+                                    "targets": [0],
+                                    "visible": false,
+                                    "searchable": false
+                                }],
+                            "aoColumnDefs": [{
+                                "bSortable": false,
+                                "aTargets": [4, 5]
+                            }],
+                            "columns": [
+                                //{
+                                //    "data": null, "render": function (data, type, full, meta) {
+                                //        return meta.row + 1;
+                                //    }
+                                //},
+                                //{"data": null,"render": function(data,type,meta){ return row.index() }},
+                                { "data": "VenueID", "name": "VenueID", "autoWidth": true },
+                                { "data": "VenueName", "name": "VenueName", "autoWidth": true },
+                                { "data": "VenueCost", "name": "VenueCost", "autoWidth": true },
+                                {
+                                    "data": "Createdate"
+                                    , "name": "Createdate", "autoWidth": true
+                                    //, "render": function (jsonDate) {
+                                    //    var date = new Date(parseInt(jsonDate.substr(6)));
+                                    //    var month = date.getMonth() + 1;
+                                    //    return month + "/" + date.getDate() + "/" + date.getFullYear();
+                                    //}
+                                },
+                                {
+                                    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
+                                },
+                                {
+                                    data: null, render: function (data, type, row) {
+                                        return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.VenueID + "'); ><i class='fa fa-trash'></i></a>";
+                                    }
+                                },
+                            ]
 
-            });
-        });
+                        });
+                    });
 
 
         function DeleteData(ID)
         {
             if (confirm("Are you sure you want to delete ...?"))
             {
-                DeleteVenue(ID);
-            }
+                            DeleteVenue(ID);
+                        }
             else
             {
-                return false;
-            }
-        }
+                            return false;
+                        }
+                    }
 
 
     function DeleteVenue(VenueID)
     {
-        var url = '@Url.Content("~/")' + "Venue/Delete";
+                        var url = '@Url.Content("~/")' + "Venue/Delete";
 
         $.post(url, { ID: VenueID }, function (data)
                 {
                     if (data)
                     {
-                        oTable = $('#myTable').DataTable();
-                        oTable.draw();
-                    }
+                                oTable = $('#myTable').DataTable();
+                                oTable.draw();
+                            }
                     else
                     {
-                        alert("Something Went Wrong!");
+                                alert("Something Went Wrong!");
+                            }
+                        });
                     }
-                });
-    }
 
-    </script>
-}
+                </script>
+            }
 
-</div>
+            @*</div>*@ <!-- /.container -->
+        </div><!-- /.container-fluid -->
+    </div><!-- /.content -->
+</div><!-- /.content-wrapper -->
