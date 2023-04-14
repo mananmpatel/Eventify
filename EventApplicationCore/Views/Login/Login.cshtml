@@ -1,6 +1,35 @@
 ﻿@model EventApplicationCore.Model.LoginViewModel
-
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
 <div class="container" ng-controller="LoginController">
+    <div class="box">
+        <h2>
+            Login
+        </h2>
+        @if (ViewBag.errormessage != null)
+        {
+            <p class="alert alert-danger" id="successMessage">@ViewBag.errormessage</p>
+        }
+        <form asp-controller="Login" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <div class="inputBox">
+                <input type="text" name="Username" required>
+                <label>Username</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <input type="submit" name="submit" value="Login">
+            @*<div class="signUp">
+                No account ?  @Html.ActionLink("Sign Up", "Registration", "Registration")
+            </div>*@
+        </form>
+    </div>
+</div>
+
+@*<div class="container" ng-controller="LoginController">
     <div class="panel panel-default">
         <div class="panel-heading">Login</div>
         <div class="panel-body">
@@ -37,4 +66,4 @@
         </div>
     </div>
 
-</div>
+</div>*@

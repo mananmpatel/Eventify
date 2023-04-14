@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*background-color: #F5F5F5;*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/audience-ge05dab9c7_1920.jpg');
+    background-repeat:no-repeat;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+
+.box {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #5B5B5B;
+}
+
+.inputBox {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #5B5B5B;
+    border: none;
+    border-bottom: 2px solid #C5C5C5;
+    outline: none;
+    background: transparent;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #5B5B5B;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus ~ label,
+input[type="password"]:focus ~ label,
+input[type="text"]:valid ~ label,
+input[type="password"]:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #6F3CFF;
+    font-size: 12px;
+}
+
+input[type="submit"] {
+    background-color: #6F3CFF;
+    color: #FFF;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+    input[type="submit"]:hover {
+        background-color: #5C2EB8;
+    }  
+.main-footer{
+    color:white;
+}
