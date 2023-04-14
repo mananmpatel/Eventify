@@ -94,7 +94,7 @@ namespace EventApplicationCore.Controllers
 
                 TempData["EquipmentMessage"] = "Equipment Saved Successfully";
                 ModelState.Clear();
-                return View(new Equipment());
+                return RedirectToAction("ViewAllEquipments","AllEquipment");
 
             }
             return View(Equipment);
@@ -217,9 +217,9 @@ namespace EventApplicationCore.Controllers
 
                 _IEquipment.UpdateEquipment(objEqu);
 
-                TempData["VenueUpdateMessage"] = "Equipment Saved Successfully";
+                TempData["EquipmentUpdateMessage"] = "Equipment Updated Successfully";
                 ModelState.Clear();
-                return View(new Equipment());
+                return RedirectToAction("ViewAllEquipments", "AllEquipment");
             }
             else
             {
@@ -234,9 +234,9 @@ namespace EventApplicationCore.Controllers
 
                 _IEquipment.UpdateEquipment(objEqu);
 
-                TempData["VenueUpdateMessage"] = "Equipment Saved Successfully";
+                TempData["EquipmentUpdateMessage"] = "Equipment Updated Successfully";
                 ModelState.Clear();
-                return View(new Equipment());
+                return RedirectToAction("ViewAllEquipments", "AllEquipment");
             }
 
         }
