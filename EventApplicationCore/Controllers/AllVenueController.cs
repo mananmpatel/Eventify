@@ -50,7 +50,6 @@ namespace EventApplicationCore.Controllers
             {
                 throw;
             }
-
         }
     }
 }

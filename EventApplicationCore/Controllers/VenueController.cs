@@ -93,7 +93,6 @@ namespace EventApplicationCore.Controllers
                 TempData["VenueMessage"] = "Venue Added Successfully";
                 ModelState.Clear();
                 return RedirectToAction("ViewAllVenues", "AllVenue");
-
             }
             return View(Venue);
         }
@@ -196,7 +195,6 @@ namespace EventApplicationCore.Controllers
                         }
                     }
                 }
-
             }
 
             if (!string.IsNullOrEmpty(PathDB))
@@ -235,7 +233,6 @@ namespace EventApplicationCore.Controllers
                 ModelState.Clear();
                 return RedirectToAction("ViewAllVenues", "AllVenue");
             }
-
         }
 
         /// <summary>

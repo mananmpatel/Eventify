@@ -67,7 +67,8 @@
                     </thead>
                 </table>
             </div>
-
+    </div><!-- /.container-fluid -->
+</div><!-- /.content -->
             @section Scripts{
                 <script>
         $(document).ready(function ()
@@ -99,11 +100,6 @@
                                 "aTargets": [4, 5]
                             }],
                             "columns": [
-                                //{
-                                //    "data": null, "render": function (data, type, full, meta) {
-                                //        return meta.row + 1;
-                                //    }
-                            //}, ,"render": function(data,type,meta){ return row.index() }
                             {
                                 "data": null, "name": "VenueID", "render": function (data, type, row, meta) {
                                     return meta.row + meta.settings._iDisplayStart + 1;
@@ -163,6 +159,4 @@
             }
 
             @*</div>*@ <!-- /.container -->
-        </div><!-- /.container-fluid -->
-    </div><!-- /.content -->
 @*</div><!-- /.content-wrapper -->*@
