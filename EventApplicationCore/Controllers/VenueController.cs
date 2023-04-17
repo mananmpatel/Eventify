@@ -214,7 +214,7 @@ namespace EventApplicationCore.Controllers
 
                 _IVenue.UpdateVenue(objvenue);
 
-                TempData["VenueUpdateMessage"] = "Venue Saved Successfully";
+                TempData["VenueUpdateMessage"] = "Venue Updated Successfully";
                 ModelState.Clear();
                 return RedirectToAction("ViewAllVenues", "AllVenue");
             }
@@ -231,7 +231,7 @@ namespace EventApplicationCore.Controllers
 
                 _IVenue.UpdateVenue(objvenue);
 
-                TempData["VenueUpdateMessage"] = "Venue Saved Successfully";
+                TempData["VenueUpdateMessage"] = "Venue Updated Successfully";
                 ModelState.Clear();
                 return RedirectToAction("ViewAllVenues", "AllVenue");
             }
