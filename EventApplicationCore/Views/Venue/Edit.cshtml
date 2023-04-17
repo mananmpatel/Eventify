@@ -39,10 +39,6 @@
     <div class="content">
         <div class="container-fluid pt-3">
             @*<div class="container">*@
-    @if (TempData["VenueUpdateMessage"] != null)
-    {
-        <p class="alert alert-success" id="successMessage">@TempData["VenueUpdateMessage"]</p>
-    }
     <form method="post" enctype="multipart/form-data" asp-controller="Venue" asp-action="Edit">
         <div class="col-xs-offset-0 col-xs-4">
             @Html.AntiForgeryToken()

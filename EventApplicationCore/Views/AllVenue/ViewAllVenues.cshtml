@@ -113,14 +113,7 @@
                                 { "data": "VenueName", "name": "VenueName", "autoWidth": true },
                                 { "data": "VenueCost", "name": "VenueCost", "autoWidth": true },
                                 {
-                                    "data": "Createdate"
-                                    , "name": "Createdate", "autoWidth": true
-                                    //, "render": function (jsonDate) {
-                                    //    var date = new Date(parseInt(jsonDate.substr(6)));
-                                    //    var month = date.getMonth() + 1;
-                                    //    return month + "/" + date.getDate() + "/" + date.getFullYear();
-                                    //}
-                                },
+                                    "data": "Createdate", "name": "Createdate", "autoWidth": true},
                                 {
                                     "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
                                 },
