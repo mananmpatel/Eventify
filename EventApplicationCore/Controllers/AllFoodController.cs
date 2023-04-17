@@ -47,11 +47,8 @@ namespace EventApplicationCore.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
     }
 }

@@ -103,9 +103,9 @@ namespace EventApplicationCore.Controllers
 
                 _IFood.SaveFood(objfood);
 
-                TempData["FoodMessage"] = "Food Saved Successfully";
+                TempData["FoodMessage"] = "Food Item Saved Successfully";
                 ModelState.Clear();
-                return View(new Food());
+                return RedirectToAction("ViewAllFoods","AllFood");
 
             }
             return View(Food);
@@ -243,9 +243,9 @@ namespace EventApplicationCore.Controllers
 
                 _IFood.UpdateFood(objfood);
 
-                TempData["VenueUpdateMessage"] = "Venue Saved Successfully";
+                TempData["FoodUpdateMessage"] = "Food Item Updated Successfully";
                 ModelState.Clear();
-                return View(new Equipment());
+                return RedirectToAction("ViewAllFoods", "AllFood");
             }
             else
             {
@@ -264,9 +264,9 @@ namespace EventApplicationCore.Controllers
 
                 _IFood.UpdateFood(objfood);
 
-                TempData["FoodUpdateMessage"] = "Food Item Saved Successfully";
+                TempData["FoodUpdateMessage"] = "Food Item Updated Successfully";
                 ModelState.Clear();
-                return View(new Food());
+                return RedirectToAction("ViewAllFoods", "AllFood");
             }
 
         }
