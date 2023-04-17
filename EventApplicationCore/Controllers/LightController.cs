@@ -100,9 +100,9 @@ namespace EventApplicationCore.Controllers
 
                 _ILight.SaveLight(objLight);
 
-                TempData["LightMessage"] = "Light Saved Successfully";
+                TempData["LightMessage"] = "Lightings Saved Successfully";
                 ModelState.Clear();
-                return View(new Light());
+                return RedirectToAction("ViewAllLights", "AllLight");
 
             }
             return View(Light);
@@ -224,9 +224,9 @@ namespace EventApplicationCore.Controllers
 
                 _ILight.UpdateLight(objLight);
 
-                TempData["LightUpdateMessage"] = "Light Saved Successfully";
+                TempData["LightUpdateMessage"] = "Lightings Updated Successfully";
                 ModelState.Clear();
-                return View(new Light());
+                return RedirectToAction("ViewAllLights", "AllLight");
             }
             else
             {
@@ -243,9 +243,9 @@ namespace EventApplicationCore.Controllers
 
                 _ILight.UpdateLight(objLight);
 
-                TempData["LightUpdateMessage"] = "Light Saved Successfully";
+                TempData["LightUpdateMessage"] = "Lightings Updated Successfully";
                 ModelState.Clear();
-                return View(new Light());
+                return RedirectToAction("ViewAllLights", "AllLight");
             }
 
         }

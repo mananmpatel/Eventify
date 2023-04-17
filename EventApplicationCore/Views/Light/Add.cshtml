@@ -2,85 +2,79 @@
 @{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="row mx-4">
-        <div class="col-sm-6">
-            <h3 class="m-0">Add Light</h3>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-            @*<div class="float-sm-right">
-            @Html.ActionLink("Create","Add","Venue",new{},new {@class="btn btn-primary"})
-            </div>*@
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-</div>
-<!-- /.content-header -->
-<div class="container">
-    @if (TempData["LightMessage"] != null)
-    {
-        <p class="alert alert-success" id="successMessage">@TempData["LightMessage"]</p>
-    }
+<!-- Navbar -->
+<nav class="navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="@Url.Action("Add","Light")" class="nav-link">Add Light</a>
+        </li>
+    </ul>
 
-    <form method="post" enctype="multipart/form-data" asp-controller="Light" asp-action="Add">
-        <div class="col-xs-offset-0 col-xs-4">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
-            @*<h3><span class="label label-info">Add Light</span></h3>*@
+    @*<!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+    <a href="@Url.Action("Add","Venue")" class="btn btn-primary" title="Add"><i class="fa fa-plus"></i><span class="p-2">Add</span></a>
+    </li>
+    </ul>*@
+</nav>
+<div class="content">
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data" asp-controller="Light" asp-action="Add">
+            <div class="col-xs-offset-0 col-xs-4">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @*<h3><span class="label label-info">Add Light</span></h3>*@
 
-            <div class="form-group">
-                Light Type
-                <input asp-for="LightType" id="LightType1" value="1" type="radio" />
-                IN Door
-                <input asp-for="LightType" id="LightType2" value="2" type="radio" />
-                Out Door
-                <span asp-validation-for="LightType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="LightName">Light Name</label>
-                <input asp-for="LightName" type="text" onblur="CheckLightNameExists();" class="form-control" />
-                <span asp-validation-for="LightName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="LightCost">Light Cost</label>
-                <input asp-for="LightCost" type="text" class="form-control" />
-                <span asp-validation-for="LightCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="controls">
-                    <label class="control-label">Upload Lights</label>
-                    <input required type="file" title="Please Upload Lights" name="files" multiple />
+                <div class="form-group">
+                    Light Type
+                    <input asp-for="LightType" id="LightType1" value="1" type="radio" />
+                    Indoor
+                    <input asp-for="LightType" id="LightType2" value="2" type="radio" />
+                    Outdoor
+                    <span asp-validation-for="LightType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="LightName">Light Name</label>
+                    <input asp-for="LightName" type="text" onblur="CheckLightNameExists();" class="form-control" />
+                    <span asp-validation-for="LightName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="LightCost">Light Cost</label>
+                    <input asp-for="LightCost" type="text" class="form-control" />
+                    <span asp-validation-for="LightCost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <label class="control-label">Upload Lights</label>
+                        <input required type="file" title="Please Upload Lights" name="files" multiple />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input id="Submit" type="submit" class="btn btn-success" value="Add New Lightings" />
+                    <a href="/AllLight/ViewAllLights" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
+        </form>
+    </div><!-- /.container-fluid -->
+</div><!-- /.content -->
+<script type="text/javascript">
+    function CheckLightNameExists() {
+        var url = '@Url.Content("~/")' + "Light/CheckLightNameAlready";
+        var source = "#LightName";
+        $.post(url, { LightName: $(source).val() },
+            function (data) {
+                if (data) {
+                    $(source).val('');
+                    alert("Light Name Already Used try unique one!");
+                }
+                else {
 
-            <div class="form-actions">
-                <input id="Submit" type="submit" class="btn btn-success" value="Add New Lightings" />
-                <a href="/AllLight/ViewAllLights" class="btn btn-danger">Cancel</a>
-            </div>
-        </div>
-    </form>
-
-
-    <script type="text/javascript">
-        function CheckLightNameExists()
-    {
-            var url = '@Url.Content("~/")' + "Light/CheckLightNameAlready";
-            var source = "#LightName";
-            $.post(url, { LightName: $(source).val() },
-            function (data)
-                {
-                    if (data)
-                    {
-                        $(source).val('');
-                        alert("Light Name Already Used try unique one!");
-                    }
-                    else
-                    {
-
-                    }
-                });
+                }
+            });
     }
-
-    </script>
-
-</div>
+</script>

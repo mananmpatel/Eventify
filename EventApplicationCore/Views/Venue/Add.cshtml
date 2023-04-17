@@ -3,96 +3,73 @@
 @{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
-@*<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="row">
-        <div class="col-sm-6 p-0">
-            <h3 class="m-0">Add Venue</h3>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-            @*<div class="float-sm-right">
-            @Html.ActionLink("Create","Add","Venue",new{},new {@class="btn btn-primary"})
-            </div>*
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-</div>
-<!-- /.content-header -->*@
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="@Url.Action("Add","Venue")" class="nav-link">Add Venue</a>
-            </li>
-        </ul>
+<!-- Navbar -->
+<nav class="navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="@Url.Action("Add","Venue")" class="nav-link">Add Venue</a>
+        </li>
+    </ul>
 
-        @*<!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="@Url.Action("Add","Venue")" class="btn btn-primary" title="Add"><i class="fa fa-plus"></i><span class="p-2">Add</span></a>
-            </li>
-        </ul>*@
-    </nav>
-    <div class="content">
-        <div class="container-fluid">
-            @*<div class="container">*@
-    @if (TempData["VenueMessage"] != null)
-    {
-        <p class="alert alert-success" id="successMessage">@TempData["VenueMessage"]</p>
-    }
-    <form method="post" enctype="multipart/form-data" asp-controller="Venue" asp-action="Add">
-        <div class="col-xs-offset-0 col-xs-4">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
-            @*<h3><span class="label label-info">Add Venue</span></h3>*@
+    @*<!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+    <a href="@Url.Action("Add","Venue")" class="btn btn-primary" title="Add"><i class="fa fa-plus"></i><span class="p-2">Add</span></a>
+    </li>
+    </ul>*@
+</nav>
+<div class="content">
+    <div class="container-fluid">
+        @*<div class="container">*@
+        <form method="post" enctype="multipart/form-data" asp-controller="Venue" asp-action="Add">
+            <div class="col-xs-offset-0 col-xs-4">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @*<h3><span class="label label-info">Add Venue</span></h3>*@
 
-            <div class="form-group">
-                <label class="control-label" asp-for="VenueName">Venue Name</label>
-                <input asp-for="VenueName" type="text" onblur="CheckVenueNameExists();" class="form-control" />
-                <span asp-validation-for="VenueName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="VenueCost">Venue Cost</label>
-                <input asp-for="VenueCost" type="text" class="form-control" />
-                <span asp-validation-for="VenueCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="controls">
-                    <label class="control-label">Upload Venue</label>
-                    <input required type="file" title="Please Upload Venue" name="files" multiple />
+                <div class="form-group">
+                    <label class="control-label" asp-for="VenueName">Venue Name</label>
+                    <input asp-for="VenueName" type="text" onblur="CheckVenueNameExists();" class="form-control" />
+                    <span asp-validation-for="VenueName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="VenueCost">Venue Cost</label>
+                    <input asp-for="VenueCost" type="text" class="form-control" />
+                    <span asp-validation-for="VenueCost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <label class="control-label">Upload Venue</label>
+                        <input required type="file" title="Please Upload Venue" name="files" multiple />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input id="Submit1" type="submit" class="btn btn-success" value="Add New Venue" />
+                    <a href="/AllVenue/ViewAllVenues" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
-
-            <div class="form-actions">
-                <input id="Submit1" type="submit" class="btn btn-success" value="Add New Venue" />
-                <a href="/AllVenue/ViewAllVenues" class="btn btn-danger">Cancel</a>
-            </div>
-        </div>
-    </form>
+        </form>
         @*</div>*@ <!-- /.container -->
     </div><!-- /.container-fluid -->
 </div><!-- /.content -->
-    <script type="text/javascript">
-    function CheckVenueNameExists()
-    {
+<script type="text/javascript">
+    function CheckVenueNameExists() {
         var url = '@Url.Content("~/")' + "Venue/CheckVenueNameExists";
         var source = "#VenueName";
         $.post(url, { venueName: $(source).val() },
-            function (data)
-                {
-                    if (data)
-                    {
-                        $(source).val('');
-                        alert("VenueName Already Used try unique one!");
-                    }
-                    else
-                    {
+            function (data) {
+                if (data) {
+                    $(source).val('');
+                    alert("VenueName Already Used try unique one!");
+                }
+                else {
 
-                    }
-                });
+                }
+            });
     }
-
-    </script>
+</script>
