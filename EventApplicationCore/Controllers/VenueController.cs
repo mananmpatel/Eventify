@@ -206,7 +206,7 @@ namespace EventApplicationCore.Controllers
                     VenueID = Venue.VenueID,
                     VenueName = Venue.VenueName,
                     VenueCost = Venue.VenueCost,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
@@ -223,7 +223,7 @@ namespace EventApplicationCore.Controllers
                     VenueID = Venue.VenueID,
                     VenueName = Venue.VenueName,
                     VenueCost = Venue.VenueCost,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 

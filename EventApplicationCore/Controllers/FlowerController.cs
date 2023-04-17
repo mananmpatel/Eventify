@@ -98,7 +98,7 @@ namespace EventApplicationCore.Controllers
 
                 TempData["FLowerMessage"] = "FLower Saved Successfully";
                 ModelState.Clear();
-                return View(new Flower());
+                return RedirectToAction("ViewAllFlowers", "AllFlower");
 
             }
             return View(Flower);
@@ -219,16 +219,16 @@ namespace EventApplicationCore.Controllers
                     FlowerFilePath = PathDB,
                     FlowerID = Flower.FlowerID,
                     FlowerName = Flower.FlowerName,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     FlowerCost = Flower.FlowerCost,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
                 _IFlower.UpdateFlower(objflower);
 
-                TempData["FlowerUpdateMessage"] = "Venue Saved Successfully";
+                TempData["FlowerUpdateMessage"] = "Flower Updated Successfully";
                 ModelState.Clear();
-                return View(new Flower());
+                return RedirectToAction("ViewAllFlowers", "AllFlower");
             }
             else
             {
@@ -237,16 +237,16 @@ namespace EventApplicationCore.Controllers
                 {
                     FlowerID = Flower.FlowerID,
                     FlowerName = Flower.FlowerName,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     FlowerCost = Flower.FlowerCost,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
                 _IFlower.UpdateFlower(objflower);
 
-                TempData["FlowerUpdateMessage"] = "FLower Saved Successfully";
+                TempData["FlowerUpdateMessage"] = "Flower Updated Successfully";
                 ModelState.Clear();
-                return View(new Flower());
+                return RedirectToAction("ViewAllFlowers", "AllFlower");
             }
 
         }
@@ -265,7 +265,7 @@ namespace EventApplicationCore.Controllers
             {
                 if (string.IsNullOrEmpty(id))
                 {
-                    return RedirectToAction("ViewAllFoods", "AllFood");
+                    return RedirectToAction("ViewAllFlowers", "AllFlower");
                 }
 
                 int result = _IFlower.DeleteFlower(Convert.ToInt32(id));
