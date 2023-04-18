@@ -116,6 +116,12 @@ namespace EventApplicationCore
                     name: "default",
                     template: "{controller=Login}/{action=Login}/{id?}");
             });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=HomeNew}/{action=Index}");
+            //});
         }
 
 
