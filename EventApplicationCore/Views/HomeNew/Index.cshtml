@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*<h2>Index Home New Page</h2>*@
+@*<div id="page" class="main-page-header">
+
+</div>*@
+<!--Main Navigation-->
+@*<header>
+    <!-- Jumbotron -->
+    <div class="p-3 text-center bg-white border-bottom">
+        <div class="container">
+            <div class="row">
+                <!-- Left elements -->
+                <div class="col-md-4 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
+                    <a href="#!" class="ms-md-2">
+                        <img src="~/images/download.png" height="35" />
+                    </a>
+                </div>
+                <!-- ./Left elements -->
+                <!-- Center elements -->
+                <div class="col-md-4">
+                @*<form class="d-flex input-group w-auto my-auto mb-3 mb-md-0">
+                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search" />
+                <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
+                </form>
+                </div>
+                <!-- ./Center elements -->
+                <!-- Right elements -->
+                <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center">
+                    
+                </div>
+                <!-- Right elements -->
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <!-- Container wrapper -->
+        <div class="container justify-content-center justify-content-md-between">
+            <!-- Left links -->
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item me-2 me-lg-0">
+                    <a class="nav-link" role="button" data-mdb-toggle="sidenav" data-mdb-target="#sidenav-1"
+                       class="btn shadow-0 p-0 me-3" aria-controls="#sidenav-1" aria-haspopup="true">
+                        <i class="fas fa-bars me-1"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                    <a class="nav-link" href="#">Bestsellers</a>
+                </li>
+                <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                    <a class="nav-link" href="#">Inspirations</a>
+                </li>
+                <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+
+            <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" type="button">
+                Download app<i class="fas fa-download ms-2"></i>
+            </button>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Customer" asp-action="Dashboard" class="navbar-brand">Dashboard</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Booking" asp-action="BookingVenue">Book Event</a></li>
+                    <li><a asp-area="" asp-controller="ShowAllBooking" asp-action="AllBookings">Booking Status</a></li>
+                    <li><a asp-area="" asp-controller="UserProfile" asp-action="Profile">Profile</a></li>
+                    <li><a asp-area="" asp-controller="Customer" asp-action="ChangePassword">ChangePassword</a></li>
+                    <li style="margin-left:300px"> <a href="#">Hi @Context.Session.GetString("Username") !</a> </li>
+
+                    <li><a asp-area="" asp-controller="Login" asp-action="Logout">LogOut</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>*@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand align-content-center" href="#"><img src="~/images/logo.png" height="35" /></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+            <li><a href="#">Page 4</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" asp-controller="Registration" asp-action="Registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a class="nav-link" asp-controller="Login" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/images/carousel/musical-concert.jpg" alt="redd" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                    <p>
+                        Musical Concert - Alan Walker
+                    </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row">
+                <div class="col-md-6"><img src="~/images/carousel/wedding.jpeg" alt="redd" class="img-responsive" /></div>
+                <div class="col-md-6"><img src="~/images/carousel/wedding2.jpeg" alt="redd" class="img-responsive" /></div>
+            </div>
+            
+            
+            <div class="carousel-caption" role="option">
+                <p>
+                    Ring Ceremony
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/carousel/birthday.jpeg" alt="redd" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Birthday Celebration
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/carousel/auditorium.jpeg" alt="redd" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Webinar in Auditorium
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/images/carousel/inaugration.jpg" alt="redd" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    Inaugration Event
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
