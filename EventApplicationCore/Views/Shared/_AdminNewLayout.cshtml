@@ -9,10 +9,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/frontEnd/plugins/fontawesome-free/css/all.min.css" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
     <!-- Theme style -->
     <link rel="stylesheet" href="~/frontEnd/dist/css/adminlte.min.css" />
 
     <title>Admin Dashboard</title>
+    <environment names="Development">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="~/frontEnd/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="~/frontEnd/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="~/frontEnd/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    </environment>
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
@@ -24,7 +32,7 @@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
-<body>
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -52,48 +60,56 @@
                         <!-- Dashboard -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <!-- Venue -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="AllVenue" asp-action="ViewAllVenues">
+                                <i class="nav-icon fas fa-map-pin"></i>
                                 <p>Venue</p>
                             </a>
                         </li>
                         <!-- Equipment -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="AllEquipment" asp-action="ViewAllEquipments">
+                                <i class="nav-icon fas fa-map-pin"></i>
                                 <p>Equipment</p>
                             </a>
                         </li>
                         <!-- Food -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="AllFood" asp-action="ViewAllFoods">
+                                <i class="nav-icon fas fa-utensils"></i>
                                 <p>Food</p>
                             </a>
                         </li>
                         <!-- Light -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="AllLight" asp-action="ViewAllLights">
+                                <i class="nav-icon fas fa-lightbulb"></i>
                                 <p>Light</p>
                             </a>
                         </li>
                         <!-- Flower -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="AllFlower" asp-action="ViewAllFlowers">
+                                <i class="nav-icon fas fa-fan"></i>
                                 <p>Flower</p>
                             </a>
                         </li>
                         <!-- Bookings Approvals -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="ShowBookingDetails" asp-action="AllBookings">
+                                <i class="nav-icon fas fa-check"></i>
                                 <p>Bookings Approvals</p>
                             </a>
                         </li>
                         <!-- User Profiles -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="UsersProfiles" asp-action="Profile">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>User Profiles</p>
                             </a>
                         </li>
@@ -108,6 +124,7 @@
                         <!-- Login -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Login" asp-action="Logout">
+                                <i class="nav-icon fas fa-right"></i>
                                 <p>Log Out</p>
                             </a>
                         </li>
@@ -176,15 +193,32 @@
     <p>&copy; 2017 - EventApplicationCore</p>
     </footer>
     </div>*@
-    @*<!-- jQuery -->
-    <script src="~/frontEnd/plugins/jquery/jquery.min.js"></script>*@
-    @*<!-- Bootstrap 4 -->
-    <script src="~/frontEnd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- jQuery -->
+    <script src="~/frontEnd/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/frontEnd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/frontEnd/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/frontEnd/plugins/jszip/jszip.min.js"></script>
+    <script src="~/frontEnd/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/frontEnd/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/frontEnd/dist/js/adminlte.min.js"></script>
 
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
@@ -195,7 +229,7 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
+        </script>*@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
