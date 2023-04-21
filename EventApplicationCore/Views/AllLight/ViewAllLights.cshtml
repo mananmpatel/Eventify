@@ -2,11 +2,6 @@
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
 
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <!-- Navbar -->
 <nav class="navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -56,6 +51,7 @@
             $("#myTable").DataTable({
                 "processing": true, // for show progress bar
                 "serverSide": true, // for process server side
+                "responsive": true,
                 "filter": true, // this is for disable filter (search box)
                 "orderMulti": false, // for disable multiple column at once
                 "ajax": {
@@ -63,12 +59,6 @@
                     "type": "POST",
                     "datatype": "json"
                 },
-                "columnDefs":
-                [{
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }],
             "aoColumnDefs": [{
                 "aTargets": [4],
                 "render": function (data, type, row, meta) {
@@ -90,7 +80,7 @@
                     { "data": "LightCost", "name": "LightCost", "autoWidth": true },
                     { "data": "Createdate", "name": "Createdate", "autoWidth": true },
                     {
-                        "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Light/Edit/' + full.LightID + '"><i class="fa fa-pen"></i></a>'; }
+                    data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Light/Edit/' + full.LightID + '"><i class="fa fa-pen"></i></a>'; }
                     },
                     {
                         data: null, render: function (data, type, row)

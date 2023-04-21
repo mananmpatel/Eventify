@@ -2,13 +2,6 @@
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
 
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
-
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -37,7 +30,7 @@
         @*<div class="container">*@
         <div style="width:100%; margin:0 auto;">
 
-            <table id="myTable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <table id="myTable" class="table table-bordered table-striped dt-responsive nowrap" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Sr. No.</th>
@@ -58,6 +51,8 @@
             $("#myTable").DataTable({
                 "processing": true, // for show progress bar
                 "serverSide": true, // for process server side
+                "responsive": true,
+                "autoWidth": false,
                 "filter": true, // this is for disable filter (search box)
                 "orderMulti": false, // for disable multiple column at once
                 "ajax": {
@@ -65,22 +60,17 @@
                     "type": "POST",
                     "datatype": "json"
                 },
-                "columnDefs":
-                    [{
-                        "targets": [0],
-                        "visible": false,
-                        "searchable": false
-                    }],
+                "lengthChange": true,
                 "aoColumnDefs": [{
-                    "aTargets": [3],
-                    "render": function (data, type, row, meta) {
-                        return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
-                    }
-                },
-                {
-                    "bSortable": false,
-                    "aTargets": [4, 5]
-                }],
+                        "aTargets": [3],
+                        "render": function (data, type, row, meta) {
+                            return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+                        }
+                    },
+                    {
+                        "bSortable": false,
+                        "aTargets": [4, 5]
+                    }],
                 "columns": [
                     {
                         "data": null, "name": "VenueID", "render": function (data, type, row, meta) {
@@ -94,10 +84,10 @@
                         "data": "Createdate", "name": "Createdate", "autoWidth": true
                     },
                     {
-                        "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
+                        data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
                     },
                     {
-                        data: null, render: function (data, type, row) {
+                        data: null, "render": function (data, type, row) {
                             return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.VenueID + "'); ><i class='fa fa-trash'></i></a>";
                         }
                     },

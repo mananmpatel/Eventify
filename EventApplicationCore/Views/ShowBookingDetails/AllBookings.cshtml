@@ -2,11 +2,6 @@
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
 
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <!-- Navbar -->
 <nav class="navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -38,10 +33,10 @@
             <thead>
                 <tr>
                     @*<th>BookingID</th>*@
-                    <th>BookingNo</th>
-                    <th>BookingDate</th>
-                    <th>BookingApproval</th>
-                    <th>BookingApprovalDate</th>
+                    <th>Booking No</th>
+                    <th>Booking Date</th>
+                    <th>Booking Approval</th>
+                    <th>Booking Approval Date</th>
                     <th>Process</th>
                 </tr>
             </thead>
@@ -61,15 +56,15 @@
                     "type": "POST",
                     "datatype": "json"
                 },
-                "columnDefs":
-                [{
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }],
+                //"columnDefs":
+                //[{
+                //    "targets": [0],
+                //    "visible": false,
+                //    "searchable": false
+                //}],
                 "aoColumnDefs": [{
                     "bSortable": false,
-                    "aTargets": [3, 4]
+                    "aTargets": [4]
                 }],
                 "columns":
                 [
@@ -83,8 +78,7 @@
                         {
                             return row.BookingApproval == "Pending" ?
                                 '<a class="btn btn-info" href="/ShowBookingDetails/BookingApproval?BookingNo=' + row.BookingNo + '">Process</a>' :
-                                row.BookingApproval == "Cancelled" ? row.BookingApproval : row.BookingApproval
-                                ;
+                                row.BookingApproval == "Cancelled" ? row.BookingApproval : row.BookingApproval;
                         }
                     },
                 ]
