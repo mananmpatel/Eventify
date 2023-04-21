@@ -1,3 +1,22 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminNewLayout.cshtml";
 }
+<!-- Navbar -->
+<nav class="navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="@Url.Action("Dashboard","Admin")" class="nav-link"><strong>Dashboard</strong></a>
+        </li>
+    </ul>
+
+    @*<!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a href="@Url.Action("Add","Venue")" class="btn btn-primary" title="Add" style="margin-right:17px;"><i class="fa fa-plus"></i><span class="p-2">Add</span></a>
+        </li>
+    </ul>*@
+</nav>
