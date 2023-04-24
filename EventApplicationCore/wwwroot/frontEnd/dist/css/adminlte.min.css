@@ -33280,8 +33280,11 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     justify-content: center
 }
 
-.login-box, .register-box {
+.login-box {
     width: 360px
+}
+.register-box {
+    width: 650px
 }
 
 @media (max-width:576px) {
