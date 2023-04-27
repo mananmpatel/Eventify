@@ -93,8 +93,9 @@ namespace EventApplicationCore.Concrete
 
             objbooking.BookingVenue = (from BD in _context.BookingVenue
                                        join Vn in _context.Venue on BD.VenueID equals Vn.VenueID
+                                       join EV in _context.Event on BD.EventTypeID equals EV.EventID
                                        where BD.BookingID == BookingDT.BookingID
-                                       select new Venue { VenueName = Vn.VenueName, VenueCost = Vn.VenueCost }).SingleOrDefault();
+                                       select new Venue { VenueName = Vn.VenueName, VenueCost = Vn.VenueCost, EventName=EV.EventType, GuestCount = BD.GuestCount }).SingleOrDefault();
 
             objbooking.BookingEquipment = (from BD in _context.BookingEquipment
                                            join Eq in _context.Equipment on BD.EquipmentID equals Eq.EquipmentID

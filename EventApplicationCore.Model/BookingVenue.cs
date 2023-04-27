@@ -23,7 +23,7 @@ namespace EventApplicationCore.Model
 
         [Required(ErrorMessage = "Required Guest Count")]
         [Display(Description = "No .Of Guest")]
-        public string GuestCount { get; set; }
+        public int GuestCount { get; set; }
 
         public int? Createdby { get; set; }
 

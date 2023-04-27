@@ -14,5 +14,5 @@ namespace EventApplicationCore.Model
         public List<Flower> BookingFlower { get; set; }
         public List<Light> BookingLight { get; set; }
         public BillingModel BillingModel { get; set; }
-}
+    }
 }

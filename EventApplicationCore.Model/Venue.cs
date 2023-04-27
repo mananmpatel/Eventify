@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,5 +27,10 @@ namespace EventApplicationCore.Model
         public int? Createdby { get; set; }
 
         public DateTime? Createdate { get; set; }
+
+        [NotMapped]
+        public string EventName { get; set; }
+        [NotMapped]
+        public int GuestCount { get; set; }
     }
 }
