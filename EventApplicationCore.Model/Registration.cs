@@ -8,7 +8,7 @@ namespace EventApplicationCore.Model
         [Key]
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Name Required")]
+        [Required(ErrorMessage = "Full Name Required")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Address Required")]
@@ -26,8 +26,8 @@ namespace EventApplicationCore.Model
         [CountryValidation]
         public int? Country { get; set; }
 
-        [Required(ErrorMessage = "Mobileno Required")]
-        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Wrong Mobileno")]
+        [Required(ErrorMessage = "Mobile No Required")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Wrong Mobile No")]
         public string Mobileno { get; set; }
 
         [Required(ErrorMessage = "EmailID Required")]

@@ -33267,7 +33267,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
         color: #495057
     }
 
-.login-page, .register-page {
+.login-page{
     -ms-flex-align: center;
     align-items: center;
     background-color: #e9ecef;
@@ -33280,11 +33280,24 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     justify-content: center
 }
 
+.register-page {
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #e9ecef;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
 .login-box {
     width: 360px
 }
 .register-box {
-    width: 650px
+    margin: 20px; 
+    width: 650px;
 }
 
 @media (max-width:576px) {

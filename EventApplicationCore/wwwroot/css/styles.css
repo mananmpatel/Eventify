@@ -22,7 +22,7 @@ body {
     -webkit-filter: blur(10px);
 }
 
-.container {
+/*.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,9 +34,9 @@ body {
     border-radius: 10px;
     padding: 40px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+}*/
 
-h2 {
+/*h2 {
     text-align: center;
     font-weight: 700;
     margin-bottom: 40px;
@@ -100,4 +100,4 @@ input[type="submit"] {
     }  
 .main-footer{
     color:white;
-}
+}*/
