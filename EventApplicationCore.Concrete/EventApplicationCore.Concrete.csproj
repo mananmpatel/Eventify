@@ -144,6 +144,7 @@
     <Compile Include="BookingVenueConcrete.cs" />
     <Compile Include="CityConcrete.cs" />
     <Compile Include="CountryConcrete.cs" />
+    <Compile Include="DashBoardConcrete.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="DishtypesConcrete.cs" />
     <Compile Include="EquipmentConcrete.cs" />

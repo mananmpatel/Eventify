@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EventApplicationCore.Filters;
+using EventApplicationCore.Interface;
+using EventApplicationCore.Model;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,9 +15,15 @@ namespace EventApplicationCore.Controllers
     public class AdminController : Controller
     {
         // GET: /<controller>/
+        private IDashboard _IDashboard;
+        public AdminController(IDashboard IDashboard)
+        {
+            _IDashboard = IDashboard;
+        }
         public IActionResult Dashboard()
         {
-            return View();
+            DashboardModel admindashboardmodel = _IDashboard.AdminDashboard();
+            return View(admindashboardmodel);
         }
     }
 }

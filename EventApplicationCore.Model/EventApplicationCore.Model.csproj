@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashboardModel.cs" />
     <Compile Include="BillingModel.cs" />
     <Compile Include="BookingDetail.cs" />
     <Compile Include="BookingEquipment.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="City.cs" />
     <Compile Include="CompleteBookingModel.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="DashboardModel.cs" />
     <Compile Include="Dishtypes.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="EquipmentModel.cs" />

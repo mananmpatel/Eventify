@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDashboard.cs" />
     <Compile Include="IBookEquipment.cs" />
     <Compile Include="IBookFlower.cs" />
     <Compile Include="IBookFood.cs" />
