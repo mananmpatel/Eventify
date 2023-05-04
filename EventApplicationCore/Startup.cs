@@ -86,6 +86,7 @@ namespace EventApplicationCore
             services.AddTransient<IBookFlower, BookFlowerConcrete>();
             services.AddTransient<IBookingLight, BookingLightConcrete>();
             services.AddTransient<ITotalbilling, TotalbillingConcrete>();
+            services.AddTransient<IDashboard, DashBoardConcrete>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
