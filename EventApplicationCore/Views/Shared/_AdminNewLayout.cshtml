@@ -7,18 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/frontEnd/plugins/fontawesome-free/css/all.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="~/frontEnd/dist/css/adminlte.min.css" />
 
-    <title>Admin Dashboard</title>
+    <title>Eventify Hub</title>
     <environment names="Development">
         <!-- DataTables -->
         <link rel="stylesheet" href="~/frontEnd/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="~/frontEnd/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="~/frontEnd/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     </environment>
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -27,7 +28,6 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/datetimepicker/jqueryui.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
@@ -112,14 +112,6 @@
                                 <p>User Profiles</p>
                             </a>
                         </li>
-@*
-                        <!-- Username -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Venue" asp-action="Add">
-                                <p>Hi @Context.Session.GetString("Username") !</p>
-                            </a>
-                        </li>*@
-
                         <!-- Login -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Login" asp-action="Logout">
@@ -137,34 +129,6 @@
             @RenderBody()
             </div>
         <!-- /.content-wrapper -->
-        @*<!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Venue</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Venue</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->*@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -185,7 +149,7 @@
         </footer>
     </div>
     <!-- ./wrapper -->
-
+    <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -198,14 +162,8 @@
     <script src="~/frontEnd/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/frontEnd/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="~/frontEnd/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    @*<script src="~/frontEnd/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/frontEnd/plugins/jszip/jszip.min.js"></script>
-    <script src="~/frontEnd/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="~/frontEnd/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="~/frontEnd/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>*@
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/frontEnd/dist/js/adminlte.min.js"></script>
 

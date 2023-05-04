@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Eventify</title>
+    <title>Eventify</title>
     <link href="~/css/styles.css" rel="stylesheet" />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -56,33 +56,8 @@
 </head>
 <body class="hold-transition login-page">
     <div class="bg-blur"></div>
-    @*<nav >
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                  
-                </ul>
-            </div>
-        </div>
-    </nav>*@
-    @*<div class="container body-content">
-    <div class="wrapper">*@
         @RenderBody()
-        @*<footer class="main-footer">
-            <!-- Default to the left -->
-            <strong>Copyright &copy; @DateTime.Now.Year <a href="#" class="text-white">Eventify</a>.</strong> All rights reserved.
-        </footer>*@
-    @*</div>*@
-
+       
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
