@@ -17,7 +17,7 @@
             <form asp-controller="Registration" asp-action="Registration" method="post">
                 <div class="row">
                     <div class="col-6">
-                        @*<span asp-validation-for="Name" class="text-danger"></span>*@
+                        <span asp-validation-for="Name" class="text-danger"></span>
                         <div class="input-group mb-3">
                             <input type="text" asp-for="Name" class="form-control" placeholder="Full name">
                             <div class="input-group-append">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        @*<span asp-validation-for="Mobileno" class="text-danger"></span>*@
+                        <span asp-validation-for="Mobileno" class="text-danger"></span>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" asp-for="Mobileno" name="Mobileno" placeholder="Mobile Number" onkeydown="return OnlyNumeric(this);" maxlength="10">
                             <div class="input-group-append">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                @*<span asp-validation-for="Address" class="text-danger"></span>*@
+                <span asp-validation-for="Address" class="text-danger"></span>
                 <div class="input-group mb-3">
                     <input type="text" asp-for="Address" class="form-control" placeholder="Address">
                     <div class="input-group-append">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row"><!-- Email - BirthDate -->
                     <div class="col-6">
-                        @*<span asp-validation-for="EmailID" class="text-danger"></span>*@
+                        <span asp-validation-for="EmailID" class="text-danger"></span>
                         <div class="input-group mb-3">
                             <input type="text" asp-for="EmailID"class="form-control" placeholder="Email">
                             <div class="input-group-append">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        @*<span asp-validation-for="Birthdate" class="text-danger"></span>*@
+                        <span asp-validation-for="Birthdate" class="text-danger"></span>
                         <div class="input-group date" id="reservationdate">
                             <input type="text" class="form-control" id="Birthdate" placeholder="Date of Birth"/>
                             <div class="input-group-append">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="row"><!-- Gender - Country -->
                     <div class="col-6">
-                        @*<span asp-validation-for="Gender" class="text-danger"></span>*@
+                        <span asp-validation-for="Gender" class="text-danger"></span>
                         <div class="container">
                             <label class="control-label" asp-for="Gender">Gender</label>
                             <div class="form-check">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        @*<span asp-validation-for="Country" class="text-danger"></span>*@
+                        <span asp-validation-for="Country" class="text-danger"></span>
                         <div class="form-group">
                             <label asp-for="Country">Country</label>
                             <select asp-for="Country"
@@ -97,14 +97,14 @@
                 </div>
                 <div class="row"><!-- State - City -->
                     <div class="col-6">
-                        @*<span asp-validation-for="State" class="text-danger"></span>*@
+                        <span asp-validation-for="State" class="text-danger"></span>
                         <div class="form-group">
                             <label asp-for="State">State</label>
                             <select asp-for="State" class="form-control select2" style="width: 100%;" asp-items="@(new SelectList(string.Empty,"StateID", "StateName"))" disabled></select>
                         </div>
                     </div>
                     <div class="col-6">
-                        @*<span asp-validation-for="City" class="text-danger"></span>*@
+                        <span asp-validation-for="City" class="text-danger"></span>
                         <div class="form-group">
                             <label asp-for="City">City</label>
                             <select asp-for="City"
