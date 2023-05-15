@@ -195,6 +195,9 @@ namespace EventApplicationCore.Concrete
         public IQueryable<BookingDetailTemp> ShowAllBooking(string sortColumn, string sortColumnDir, string Search)
         {
             var IQueryableBooking = (from tempbooking in _context.BookingDetails
+                                     join Bv in _context.BookingVenue on tempbooking.BookingID equals Bv.BookingVenueID
+                                     join Vn in _context.Venue on Bv.VenueID equals Vn.VenueID
+                                     join Ev in _context.Event on Bv.EventTypeID equals Ev.EventID
                                      where tempbooking.BookingCompletedFlag == "C"
                                      select new BookingDetailTemp
                                      {
@@ -203,6 +206,9 @@ namespace EventApplicationCore.Concrete
                                          BookingNo = tempbooking.BookingNo,
                                          BookingID = tempbooking.BookingID,
                                          BookingApproval = tempbooking.BookingApproval == "P" ? "Pending" : tempbooking.BookingApproval == "R" ? "Rejected" : tempbooking.BookingApproval == "C" ? "Cancelled" : "Approved",
+                                         EventName = Ev.EventType,
+                                         VenueName = Vn.VenueName,
+                                         GuestCount = Bv.GuestCount
                                      });
 
             if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))

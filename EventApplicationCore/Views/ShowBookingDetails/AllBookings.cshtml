@@ -35,9 +35,12 @@
                     @*<th>BookingID</th>*@
                     <th>Booking No</th>
                     <th>Booking Date</th>
-                    <th>Booking Approval</th>
-                    <th>Booking Approval Date</th>
-                    <th>Process</th>
+                    <th>Event</th>
+                    <th>Venue</th>
+                    <th>Guest Count</th>
+                    @*<th>Booking Approval</th>
+                    <th>Booking Approval Date</th>*@
+                    <th>Status</th>
                 </tr>
             </thead>
         </table>
@@ -62,19 +65,22 @@
                 //    "visible": false,
                 //    "searchable": false
                 //}],
-                "aoColumnDefs": [{
-                    "bSortable": false,
-                    "aTargets": [4]
-                }],
+                //"aoColumnDefs": [{
+                //    "bSortable": false,
+                //    "aTargets": [5]
+                //}],
                 "columns":
                 [
                         //{ "data": "BookingID", "name": "BookingID", "onpagehide": true }, row.BookingApproval == "Cancelled" ? '<span class="badge badge-pill badge-warning"' + row.BookingNo + '">Cancelled</span>' : row.BookingApproval;
                     { "data": "BookingNo", "name": "BookingNo", "autoWidth": true },
                     { "data": "BookingDate", "name": "BookingDate", "autoWidth": true },
-                    { "data": "BookingApproval", "name": "BookingApproval" },
-                    { "data": "BookingApprovalDate", "name": "BookingApprovalDate" },
+                        { "data": "EventName", "name": "EventName", "autoWidth": true },
+                        { "data": "VenueName", "name": "VenueName", "autoWidth": true },
+                        { "data": "GuestCount", "name": "GuestCount", "autoWidth": true },
+                    //{ "data": "BookingApproval", "name": "BookingApproval" },
+                    //{ "data": "BookingApprovalDate", "name": "BookingApprovalDate" },
                     {
-                        "data": null, render: function (data, type, row)
+                        "data": null,"name":"BookingApproval", render: function (data, type, row)
                         {
                             return row.BookingApproval == "Pending" ?
                                     '<a class="badge badge-pill badge-info fs-initial" href="/ShowBookingDetails/BookingApproval?BookingNo=' + row.BookingNo + '">Process</a>' :

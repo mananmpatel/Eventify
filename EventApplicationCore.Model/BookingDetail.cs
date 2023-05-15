@@ -31,5 +31,8 @@ namespace EventApplicationCore.Model
         public string CreatedDate { get; set; }
         public string BookingApproval { get; set; }
         public string BookingApprovalDate { get; set; }
+        public string EventName { get; set; }
+        public string VenueName { get; set; }
+        public int GuestCount { get; set; }
     }
 }
