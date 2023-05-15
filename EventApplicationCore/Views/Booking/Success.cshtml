@@ -1,12 +1,13 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutNewCustomer.cshtml";
 }
-
+<div class="container">
 @if (ViewData["BookingMessage"] != null)
 {
     <p class="alert alert-success" id="successMessage">@ViewData["BookingMessage"]</p>
-    <h3>Next Process BookEquipment</h3>
-    <p>
+    <h3>Next Process Book Equipment</h3>
+    <p class="py-3">
         @Html.ActionLink("Click Here to Book Equipment", "Equipment", "BookEquipment")
     </p>
 }
+</div>

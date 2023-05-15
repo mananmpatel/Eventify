@@ -3,53 +3,55 @@
     Layout = "~/Views/Shared/_LayoutNewCustomer.cshtml";
 }
 
-<div class="container">
-    <form asp-controller="BookEquipment" asp-action="Equipment" method="post">
-        <div class="col-xs-offset-0 col-xs-4">
-            <h3><span class="label label-info">Book Equipment</span></h3>
-            <div class="form-group">
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-                @for (int i = 0; i < Model.EquipmentList.Count(); i++)
-                {
-                    <input asp-for="@Model.EquipmentList[i].EquipmentChecked" type="checkbox" />
-                    <label asp-for="@Model.EquipmentList[i].EquipmentID">@Model.EquipmentList[i].EquipmentName</label>
-                    <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentID" />
-                    <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentName" />
-                    <br />
-                }
-                <div class="form-actions">
-                    <input id="Submit" type="submit" class="btn btn-success" value="Book Equipment" />
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="col-xs-offset-0 col-xs-6">
-        <div id="wrap">
-            <div id="slider-holder">
-                @{
-                    var data = (List<EventApplicationCore.Model.Equipment>)ViewBag.SliderEquipmentImages;
-
-                    for (int i = 0; i < (data.Count()); i++)
-                    {
-                        <div class="slide">
-                            <div style="background-color:black">@data[i].EquipmentName</div>
-                            <img src="/@data[i].EquipmentFilePath" width="400" height="300" alt="@data[i].EquipmentName">
+<div class="container py-3">
+    <div class="row">
+        <div class="col-5">
+            <form asp-controller="BookEquipment" asp-action="Equipment" method="post">
+                    <h3><span class="label label-info">Book Equipment</span></h3>
+                    <div class="form-group">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @for (int i = 0; i < Model.EquipmentList.Count(); i++)
+                        {
+                            <input asp-for="@Model.EquipmentList[i].EquipmentChecked" type="checkbox" />
+                            <label asp-for="@Model.EquipmentList[i].EquipmentID">@Model.EquipmentList[i].EquipmentName</label>
+                            <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentID" />
+                            <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentName" />
+                            <br />
+                        }
+                        <div class="form-actions">
+                            <input id="Submit" type="submit" class="btn btn-success" value="Book Equipment" />
                         </div>
-                        <div id="btn-nav-holder">
-                            @if (i == 0)
-                            {
-                                <img src="/images/bn-slide-on.png" width="8" height="8" alt="" />
-                            }
-                            else
-                            {
-                                <img src="/images/bn-slide-off.png" width="8" height="8" alt="" />
-                            }
+                    </div>
+            </form>
+        </div>
+        <div class="col-7">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            @{
+                var data = (List<EventApplicationCore.Model.Equipment>)ViewBag.SliderEquipmentImages;
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < (data.Count()); i++)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="i"></li>
+                    }
+                </ol>
+
+                <div class="carousel-inner">
+                    @for (int i = 0; i < (data.Count()); i++)
+                    {
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/@data[i].EquipmentFilePath" alt="@data[i].EquipmentName">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>@data[i].EquipmentName</h5>
+                            </div>
                         </div>
                     }
-                }
+                </div>
+            }
             </div>
-            <div style="clear: both;"></div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $("#carouselExampleIndicators .carousel-inner .carousel-item:first-child").addClass("active");
+</script>
