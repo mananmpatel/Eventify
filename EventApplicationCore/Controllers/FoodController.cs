@@ -237,7 +237,7 @@ namespace EventApplicationCore.Controllers
                     FoodType = Food.FoodType,
                     MealType = Food.MealType,
                     DishType = Food.DishType,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
@@ -258,7 +258,7 @@ namespace EventApplicationCore.Controllers
                     FoodType = Food.FoodType,
                     MealType = Food.MealType,
                     DishType = Food.DishType,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 

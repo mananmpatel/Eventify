@@ -86,7 +86,7 @@ namespace EventApplicationCore.Controllers
                     EquipmentID = 0,
                     EquipmentName = Equipment.EquipmentName,
                     EquipmentCost = Equipment.EquipmentCost,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 

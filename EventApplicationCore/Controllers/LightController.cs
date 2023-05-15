@@ -216,7 +216,7 @@ namespace EventApplicationCore.Controllers
                     LightName = Light.LightName,
                     LightCost = Light.LightCost,
                     LightType = Light.LightType,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
@@ -237,7 +237,7 @@ namespace EventApplicationCore.Controllers
                     LightName = Light.LightName,
                     LightCost = Light.LightCost,
                     LightType = Light.LightType,
-                    Createdate = DateTime.Now,
+                    //Createdate = DateTime.Now,
                     Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID"))
                 };
 
