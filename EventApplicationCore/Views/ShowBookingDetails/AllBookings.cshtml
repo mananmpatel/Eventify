@@ -68,7 +68,7 @@
                 }],
                 "columns":
                 [
-                    //{ "data": "BookingID", "name": "BookingID", "onpagehide": true },
+                        //{ "data": "BookingID", "name": "BookingID", "onpagehide": true }, row.BookingApproval == "Cancelled" ? '<span class="badge badge-pill badge-warning"' + row.BookingNo + '">Cancelled</span>' : row.BookingApproval;
                     { "data": "BookingNo", "name": "BookingNo", "autoWidth": true },
                     { "data": "BookingDate", "name": "BookingDate", "autoWidth": true },
                     { "data": "BookingApproval", "name": "BookingApproval" },
@@ -77,8 +77,10 @@
                         "data": null, render: function (data, type, row)
                         {
                             return row.BookingApproval == "Pending" ?
-                                '<a class="btn btn-info" href="/ShowBookingDetails/BookingApproval?BookingNo=' + row.BookingNo + '">Process</a>' :
-                                row.BookingApproval == "Cancelled" ? row.BookingApproval : row.BookingApproval;
+                                    '<a class="badge badge-pill badge-info fs-initial" href="/ShowBookingDetails/BookingApproval?BookingNo=' + row.BookingNo + '">Process</a>' :
+                                    row.BookingApproval == "Cancelled" ? '<span class="badge badge-pill badge-warning fs-initial">Cancelled</span>' :
+                                        row.BookingApproval == "Approved" ? '<span class="badge badge-pill badge-success fs-initial">Approved</span>' :
+                                            row.BookingApproval == "Rejected" ? '<span class="badge badge-pill badge-danger fs-initial">Rejected</span>' : row.BookingApproval;
                         }
                     },
                 ]
