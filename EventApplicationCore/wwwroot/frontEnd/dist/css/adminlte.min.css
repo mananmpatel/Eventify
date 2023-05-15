@@ -5159,6 +5159,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 
+.fs-initial {
+    font-size:initial;
+}
+
 @media (prefers-reduced-motion:reduce) {
     .badge {
         transition: none
