@@ -38,7 +38,6 @@
                         <th>Meal Type</th>
                         <th>Dish Type</th>
                         <th>Food Cost</th>
-                        <th>Created Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -59,15 +58,16 @@
                         "type": "POST",
                         "datatype": "json"
                     },
-                    "aoColumnDefs": [{
-                        "aTargets": [6],
-                        "render": function (data, type, row, meta) {
-                            return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
-                        }
-                    },
+                    "aoColumnDefs": [
+                    //    {
+                    //    "aTargets": [6],
+                    //    "render": function (data, type, row, meta) {
+                    //        return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+                    //    }
+                    //},
                     {
                         "bSortable": false,
-                        "aTargets": [7, 8]
+                        "aTargets": [6, 7]
                     }],
                     "columns": [
                         {
@@ -81,7 +81,6 @@
                         { "data": "MealTypeName", "name": "MealTypeName", "autoWidth": true },
                         { "data": "DishTypeName", "name": "DishTypeName", "autoWidth": true },
                         { "data": "FoodCost", "name": "FoodCost", "autoWidth": true },
-                        { "data": "Createdate", "name": "Createdate", "autoWidth": true },
                         {
                             data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Food/Edit/' + full.FoodID + '"><i class="fa fa-pen"></i></a>'; }
                         },

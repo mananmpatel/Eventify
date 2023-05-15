@@ -34,7 +34,6 @@
                         <th>Sr. No.</th>
                         <th>Flower Name</th>
                         <th>Flower Cost</th>
-                        <th>Created Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -56,15 +55,16 @@
                 "type": "POST",
                 "datatype": "json"
             },
-            "aoColumnDefs": [{
-                "aTargets": [3],
-                "render": function (data, type, row, meta) {
-                    return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
-                }
-            },
+            "aoColumnDefs": [
+            //{
+            //    "aTargets": [3],
+            //    "render": function (data, type, row, meta) {
+            //        return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+            //    }
+            //},
             {
                 "bSortable": false,
-                "aTargets": [4, 5]
+                "aTargets": [3, 4]
             }],
             "columns": [
                 {
@@ -75,7 +75,6 @@
                 //{ "data": "FlowerID", "name": "FlowerID", "autoWidth": true },
                 { "data": "FlowerName", "name": "FlowerName", "autoWidth": true },
                 { "data": "FlowerCost", "name": "FlowerCost", "autoWidth": true },
-                { "data": "Createdate", "name": "Createdate", "autoWidth": true },
                 {
                     data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Flower/Edit/' + full.FlowerID + '"><i class="fa fa-pen"></i></a>'; }
                 },

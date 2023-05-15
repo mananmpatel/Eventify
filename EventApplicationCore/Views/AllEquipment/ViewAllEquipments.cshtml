@@ -45,7 +45,6 @@
                         <th>Sr. No.</th>
                         <th>Equipment Name</th>
                         <th>Equipment Cost</th>
-                        <th>Created Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -72,15 +71,16 @@
                         //    "visible": false,
                         //    "searchable": false
                         //}],
-                        "aoColumnDefs": [{
-                            "aTargets": [3],
-                            "render": function (data, type, row, meta) {
-                                return type === 'display' ? data != null ? moment(data).format('DD/MM/YYYY') : ' ' : data;
-                            }
-                        },
+                        "aoColumnDefs": [
+                        //    {
+                        //    "aTargets": [3],
+                        //    "render": function (data, type, row, meta) {
+                        //        return type === 'display' ? data != null ? moment(data).format('DD/MM/YYYY') : ' ' : data;
+                        //    }
+                        //},
                         {
                             "bSortable": false,
-                            "aTargets": [4, 5]
+                            "aTargets": [3, 4]
                         }],
                         "columns": [
                             {
@@ -91,7 +91,6 @@
                             //{ "data": "EquipmentID", "name": "EquipmentID", "autoWidth": true },
                             { "data": "EquipmentName", "name": "EquipmentName", "autoWidth": true },
                             { "data": "EquipmentCost", "name": "EquipmentCost", "autoWidth": true },
-                            { "data": "Createdate", "name": "Createdate", "autoWidth": true },
                             {
                                 data: null, "render": function (data, type, full, meta) {
                                     return '<a class="btn btn-info" href="/Equipment/Edit/' + full.EquipmentID + '"><i class="fa fa-pen"></i></a>';

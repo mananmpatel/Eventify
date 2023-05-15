@@ -36,7 +36,6 @@
                         <th>Sr. No.</th>
                         <th>Venue Name</th>
                         <th>Venue Cost</th>
-                        <th>Created date</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -61,15 +60,16 @@
                     "datatype": "json"
                 },
                 "lengthChange": true,
-                "aoColumnDefs": [{
-                        "aTargets": [3],
-                        "render": function (data, type, row, meta) {
-                            return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
-                        }
-                    },
+                "aoColumnDefs": [
+                    //{
+                    //    "aTargets": [3],
+                    //    "render": function (data, type, row, meta) {
+                    //        return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+                    //    }
+                    //},
                     {
                         "bSortable": false,
-                        "aTargets": [4, 5]
+                        "aTargets": [3, 4]
                     }],
                 "columns": [
                     {
@@ -80,9 +80,6 @@
                     //{ "data": "VenueID", "name": "VenueID", "autoWidth": true },
                     { "data": "VenueName", "name": "VenueName", "autoWidth": true },
                     { "data": "VenueCost", "name": "VenueCost", "autoWidth": true },
-                    {
-                        "data": "Createdate", "name": "Createdate", "autoWidth": true
-                    },
                     {
                         data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Venue/Edit/' + full.VenueID + '"><i class="fa fa-pen"></i></a>'; }
                     },

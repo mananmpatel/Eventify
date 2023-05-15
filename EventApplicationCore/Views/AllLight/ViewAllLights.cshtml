@@ -36,7 +36,6 @@
                     <th>Light Name</th>
                     <th>Light Type</th>
                     <th>Light Cost</th>
-                    <th>Created Date</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -59,14 +58,16 @@
                     "type": "POST",
                     "datatype": "json"
                 },
-            "aoColumnDefs": [{
-                "aTargets": [4],
-                "render": function (data, type, row, meta) {
-                    return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
-                }
-            }, {
+            "aoColumnDefs": [
+                //{
+                //"aTargets": [4],
+                //"render": function (data, type, row, meta) {
+                //    return type === 'display' ? moment(data).format('DD/MM/YYYY') : data;
+                //    }
+                //}, 
+                {
                     "bSortable": false,
-                    "aTargets": [5, 6]
+                    "aTargets": [4, 5]
                 }],
                 "columns": [
                 {
@@ -78,7 +79,6 @@
                     { "data": "LightName", "name": "LightName", "autoWidth": true },
                     { "data": "LightTypeName", "name": "LightType", "autoWidth": true },
                     { "data": "LightCost", "name": "LightCost", "autoWidth": true },
-                    { "data": "Createdate", "name": "Createdate", "autoWidth": true },
                     {
                     data: null, "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Light/Edit/' + full.LightID + '"><i class="fa fa-pen"></i></a>'; }
                     },
