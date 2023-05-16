@@ -122,7 +122,7 @@ namespace EventApplicationCore.Concrete
         public List<FlowerModel> GetAllFlower()
         {
             var FlowerList = (from flower in _context.Flower
-                            select new FlowerModel { FlowerID = flower.FlowerID, FlowerName = flower.FlowerName }).ToList();
+                            select new FlowerModel { FlowerID = flower.FlowerID, FlowerName = flower.FlowerName, FlowerCost = flower.FlowerCost }).ToList();
 
             return FlowerList;
         }

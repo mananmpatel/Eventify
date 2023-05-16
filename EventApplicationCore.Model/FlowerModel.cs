@@ -11,7 +11,7 @@ namespace EventApplicationCore.Model
     {
         public int FlowerID { get; set; }
         public string FlowerName { get; set; }
-
+        public int? FlowerCost { get; set; }
         [NotMapped]
         public bool FlowerChecked { get; set; }
     }

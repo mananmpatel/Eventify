@@ -17,7 +17,7 @@
                         @for (int i = 0; i < Model.FlowerList.Count(); i++)
                         {
                             <input asp-for="@Model.FlowerList[i].FlowerChecked" type="checkbox" />
-                            <label asp-for="@Model.FlowerList[i].FlowerID">@Model.FlowerList[i].FlowerName</label>
+                            <label asp-for="@Model.FlowerList[i].FlowerID">@Model.FlowerList[i].FlowerName (Rs. @Model.FlowerList[i].FlowerCost)</label>
                             <input type="hidden" asp-for="@Model.FlowerList[i].FlowerID" />
                             <input type="hidden" asp-for="@Model.FlowerList[i].FlowerName" />
                             <br />
