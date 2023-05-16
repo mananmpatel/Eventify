@@ -144,7 +144,8 @@ namespace EventApplicationCore.Concrete
                             {
                                 FoodID = food.FoodID,
                                 FoodFilename = food.FoodFilename,
-                                FoodFilePath = food.FoodFilePath
+                                FoodFilePath = food.FoodFilePath,
+                                FoodName = food.FoodName
                             }).ToList();
 
             return FoodList;

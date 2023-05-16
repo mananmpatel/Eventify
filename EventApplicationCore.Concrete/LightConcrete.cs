@@ -140,7 +140,8 @@ namespace EventApplicationCore.Concrete
                               {
                                   LightID = light.LightID,
                                   LightFilename = light.LightName,
-                                  LightFilePath = light.LightFilePath
+                                  LightFilePath = light.LightFilePath,
+                                  LightName = light.LightName
                               }).ToList();
 
             return LightList;

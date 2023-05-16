@@ -135,7 +135,8 @@ namespace EventApplicationCore.Concrete
                             {
                                 FlowerID = flower.FlowerID,
                                 FlowerFilename = flower.FlowerName,
-                                FlowerFilePath = flower.FlowerFilePath
+                                FlowerFilePath = flower.FlowerFilePath,
+                                FlowerName = flower.FlowerName
                             }).ToList();
 
             return FlowerList;
