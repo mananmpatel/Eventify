@@ -28,7 +28,7 @@
                     <input asp-for="@Model.BookingVenue.GuestCount" readonly="readonly" maxlength="10" name="VenueCost" type="text" class="form-control" />
 
                     <label class="control-label" asp-for="@Model.BillingModel.TotalAmount">Total Amount</label>
-                    <input asp-for="@Model.BillingModel.TotalAmount" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control text-right" />
+                    <input asp-for="@Model.BillingModel.TotalAmount" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control text-right" value="Rs. @Model.BillingModel.TotalAmount"/>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     <input asp-for="@Model.BookingVenue.VenueName" type="text" readonly="readonly" class="form-control" />
 
                     <label class="control-label" asp-for="@Model.BookingVenue.VenueCost">Venue Cost</label>
-                    <input asp-for="@Model.BookingVenue.VenueCost" readonly="readonly" maxlength="10" name="VenueCost" type="text" class="form-control" />
+                    <input asp-for="@Model.BookingVenue.VenueCost" readonly="readonly" maxlength="10" name="VenueCost" type="text" class="form-control" value="Rs. @Model.BookingVenue.VenueCost"/>
 
                 </div>
             </div>
@@ -72,7 +72,7 @@
 
                             <div class="col-6">
                                 <label class="control-label" asp-for="@Model.BookingEquipment[i].EquipmentCost">EquipmentCost</label>
-                                <input asp-for="@Model.BookingEquipment[i].EquipmentCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" />
+                                <input asp-for="@Model.BookingEquipment[i].EquipmentCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" value="Rs. @Model.BookingEquipment[i].EquipmentCost"/>
                             </div>
                             <div class="col-lg-3">
                             </div>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-lg-3">
                                 <label class="control-label" asp-for="@Model.BookingLight[i].LightCost">LightCost</label>
-                                <input asp-for="@Model.BookingLight[i].LightCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" />
+                                        <input asp-for="@Model.BookingLight[i].LightCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" value="Rs. @Model.BookingLight[i].LightCost" />
                             </div>
                             <div class="col-lg-3">
                             </div>
@@ -144,7 +144,7 @@
 
                             <div class="col-6">
                                 <label class="control-label" asp-for="@Model.BookingFlower[i].FlowerCost">FlowerCost</label>
-                                <input asp-for="@Model.BookingFlower[i].FlowerCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" />
+                                        <input asp-for="@Model.BookingFlower[i].FlowerCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" value="Rs. @Model.BookingFlower[i].FlowerCost" />
                             </div>
                             <div class="col-6">
                             </div>
@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label class="control-label" asp-for="@Model.BookingFood[i].FoodCost">MealType</label>
-                                <input asp-for="@Model.BookingFood[i].FoodCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" />
+                                <input asp-for="@Model.BookingFood[i].FoodCost" readonly="readonly" maxlength="10" name="Mobileno" type="text" class="form-control" value="Rs. @Model.BookingFood[i].FoodCost" />
                             </div>
                         </div>
                         </div><!--./Individual Card Body-->
