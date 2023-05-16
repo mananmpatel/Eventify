@@ -143,7 +143,7 @@ namespace EventApplicationCore.Concrete
             int? TotalFoodCost = (from BD in _context.BookingFood
                                   join Fo in _context.Food on BD.DishName equals Fo.FoodID
                                   where BD.BookingID == BookingDT.BookingID
-                                  select Fo.FoodCost).Sum();
+                                  select Fo.FoodCost).Sum() * objbooking.BookingVenue.GuestCount;
 
             int? TotalFlowerCost = (from BD in _context.BookingFlower
                                     join Fl in _context.Flower on BD.FlowerID equals Fl.FlowerID
