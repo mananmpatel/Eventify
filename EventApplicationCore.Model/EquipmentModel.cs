@@ -12,6 +12,7 @@ namespace EventApplicationCore.Model
     {
         public int EquipmentID { get; set; }
         public string EquipmentName { get; set; }
+        public int? EquipmentCost { get; set; }
         [NotMapped]
         public bool EquipmentChecked { get; set; }
     }

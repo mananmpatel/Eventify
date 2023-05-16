@@ -14,7 +14,7 @@
                         @for (int i = 0; i < Model.EquipmentList.Count(); i++)
                         {
                             <input asp-for="@Model.EquipmentList[i].EquipmentChecked" type="checkbox" />
-                            <label asp-for="@Model.EquipmentList[i].EquipmentID">@Model.EquipmentList[i].EquipmentName</label>
+                            <label asp-for="@Model.EquipmentList[i].EquipmentID">@Model.EquipmentList[i].EquipmentName (@Model.EquipmentList[i].EquipmentCost)</label>
                             <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentID" />
                             <input type="hidden" asp-for="@Model.EquipmentList[i].EquipmentName" />
                             <br />
@@ -54,4 +54,12 @@
 </div>
 <script type="text/javascript">
     $("#carouselExampleIndicators .carousel-inner .carousel-item:first-child").addClass("active");
+
+    $('input[type=checkbox]').click(function () {
+        if ($(this).is(':checked')) {
+           alert(1)
+        } else {
+            alert(1)
+        }
+    });
 </script>

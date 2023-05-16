@@ -62,7 +62,7 @@ namespace EventApplicationCore.Concrete
         public List<EquipmentModel> GetAllEquipment()
         {
             var EquipmentList = (from equipment in _context.Equipment
-                          select new EquipmentModel { EquipmentID = equipment.EquipmentID, EquipmentName = equipment.EquipmentName }).ToList();
+                          select new EquipmentModel { EquipmentID = equipment.EquipmentID, EquipmentName = equipment.EquipmentName, EquipmentCost = equipment.EquipmentCost }).ToList();
 
             return EquipmentList;
         }
