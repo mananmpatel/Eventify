@@ -6,7 +6,7 @@ namespace EventApplicationCore.Model
     {
         public int LightID { get; set; }
         public string LightName { get; set; }
-
+        public int? LightCost { get; set; }
         [NotMapped]
         public bool LightChecked { get; set; }
     }

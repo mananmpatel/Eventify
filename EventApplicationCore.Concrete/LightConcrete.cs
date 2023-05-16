@@ -128,7 +128,7 @@ namespace EventApplicationCore.Concrete
         public List<LightModel> GetAllLight()
         {
             var LightList = (from light in _context.Light
-                              select new LightModel { LightID = light.LightID, LightName = light.LightName }).ToList();
+                              select new LightModel { LightID = light.LightID, LightName = light.LightName, LightCost = light.LightCost }).ToList();
 
             return LightList;
         }
