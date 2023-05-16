@@ -12,7 +12,7 @@ namespace EventApplicationCore.Model
     {
         public int FoodID { get; set; }
         public string FoodName { get; set; }
-
+        public int? FoodCost { get; set; }
         [NotMapped]
         public bool FoodChecked { get; set; }
     }

@@ -133,8 +133,7 @@ namespace EventApplicationCore.Concrete
         public List<FoodModel> GetAllFood()
         {
             var FoodList = (from food in _context.Food
-                            select new FoodModel { FoodID = food.FoodID, FoodName = food.FoodName }).ToList();
-
+                            select new FoodModel { FoodID = food.FoodID, FoodName = food.FoodName, FoodCost = food.FoodCost }).ToList();
             return FoodList;
         }
 

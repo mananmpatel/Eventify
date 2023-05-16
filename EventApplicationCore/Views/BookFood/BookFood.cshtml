@@ -43,7 +43,7 @@
                         @for (int i = 0; i < Model.FoodList.Count(); i++)
                         {
                             <input asp-for="@Model.FoodList[i].FoodChecked" type="checkbox" />
-                            <label asp-for="@Model.FoodList[i].FoodID">@Model.FoodList[i].FoodName</label>
+                            <label asp-for="@Model.FoodList[i].FoodID">@Model.FoodList[i].FoodName (Rs. @Model.FoodList[i].FoodCost)</label>
                             <input type="hidden" asp-for="@Model.FoodList[i].FoodID" />
                             <input type="hidden" asp-for="@Model.FoodList[i].FoodName" />
                             <br />
