@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="VenueID">Venue Type</label>
-                    <select asp-for="VenueID" class="form-control" asp-items="@(new SelectList(string.Empty, "VenueID", "VenueName"))"></select>
+                    <select asp-for="VenueID" class="form-control" asp-items="@(new SelectList(string.Empty, "VenueID", "VenueCost"))"></select>
                     <span asp-validation-for="VenueID" class="text-danger"></span>
                 </div>
 
@@ -300,7 +300,7 @@ $(document).ready(function () {
         items += "<option value='" + "" + "'>" + "----Select----" + "</option>";
         $("#VenueID").empty();
         $.each(data, function (i, subcategory) {
-            items += "<option value='" + subcategory.VenueID + "'>" + subcategory.VenueName + "</option>";
+                items += "<option value='" + subcategory.VenueID + "'>" + subcategory.VenueName+"(Rs. "+subcategory.VenueCost +")"+ "</option>";
         });
         $('#VenueID').html(items);
 
