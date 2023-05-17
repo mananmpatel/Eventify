@@ -79,8 +79,9 @@ namespace EventApplicationCore.Controllers
 
                 if (result > 0)
                 {
-                    ViewData["BookingEquipmentMessage"] = "Equipment Booked Successfully";
-                    return View("Success");
+                    TempData["BookingEquipmentMessage"] = "Equipment Booked Successfully";
+                    //return View("Success");
+                    return RedirectToAction("BookFood","BookFood");
                 }
                 else
                 {

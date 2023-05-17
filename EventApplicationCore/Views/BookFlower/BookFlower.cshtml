@@ -3,6 +3,10 @@
     Layout = "~/Views/Shared/_LayoutNewCustomer.cshtml";
 }
 <div class="container py-3">
+    @if (TempData["BookingLightingMessage"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["BookingLightingMessage"]</p>
+    }
     <div class="row">
         <div class="col-5">
             @if (TempData["BookingFlowerMessage"] != null)

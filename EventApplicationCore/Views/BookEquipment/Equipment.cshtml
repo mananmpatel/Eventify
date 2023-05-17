@@ -4,6 +4,10 @@
 }
 
 <div class="container py-3">
+    @if (TempData["BookingMessage"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["BookingMessage"]</p>
+    }
     <div class="row">
         <div class="col-5">
             <form asp-controller="BookEquipment" asp-action="Equipment" method="post">

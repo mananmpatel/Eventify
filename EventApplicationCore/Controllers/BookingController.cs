@@ -80,8 +80,10 @@ namespace EventApplicationCore.Controllers
                 {
                     SetSlider();
                     ModelState.Clear();
-                    ViewData["BookingMessage"] = "Venue Booked Successfully";
+                    TempData["BookingMessage"] = "Venue Booked Successfully";
                     return View("Success");
+                    //return View("Success");
+                    return RedirectToAction("Equipment","BookEquipment");
                 }
                 else
                 {

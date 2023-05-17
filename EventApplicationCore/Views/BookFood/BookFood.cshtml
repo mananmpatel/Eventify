@@ -4,6 +4,10 @@
 }
 
 <div class="container py-3">
+    @if (TempData["BookingEquipmentMessage"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["BookingEquipmentMessage"]</p>
+    }
     <div class="row">
         <div class="col-5">
             @if (TempData["BookingFoodMessage"] != null)

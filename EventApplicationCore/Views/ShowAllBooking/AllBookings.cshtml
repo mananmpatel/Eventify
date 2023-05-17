@@ -1,7 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutNewCustomer.cshtml";
 }
-
+@if (TempData["BookingFlowerMessage"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["BookingFlowerMessage"]</p>
+}
+@if (TempData["BookingCompleted"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["BookingCompleted"]</p>
+}
 
 
 @*<div class="container">*@

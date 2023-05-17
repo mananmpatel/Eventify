@@ -83,8 +83,9 @@ namespace EventApplicationCore.Controllers
                     if (result > 0)
                     {
                         ModelState.Clear();
-                        ViewData["BookingLightingMessage"] = "Lighting Booked Successfully";
-                        return View("Success");
+                        TempData["BookingLightingMessage"] = "Lighting Booked Successfully";
+                        //return View("Success");
+                        return RedirectToAction("BookFlower", "BookFlower");
                     }
                     else
                     {

@@ -3,6 +3,10 @@
     Layout = "~/Views/Shared/_LayoutNewCustomer.cshtml";
 }
 <div class="container py-3">
+    @if (TempData["BookingFoodMessage"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["BookingFoodMessage"]</p>
+    }
     <div class="row">
         <div class="col-5">
             <form method="post" enctype="multipart/form-data" asp-controller="BookLight" asp-action="BookLight">
