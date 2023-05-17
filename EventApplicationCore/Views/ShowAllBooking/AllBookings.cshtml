@@ -7,7 +7,7 @@
 }
 @if (TempData["BookingCompleted"] != null)
 {
-    <p class="alert alert-success" id="successMessage">@TempData["BookingCompleted"]</p>
+    <p class="alert alert-success" id="successMessage1">@TempData["BookingCompleted"]</p>
 }
 
 
@@ -102,7 +102,11 @@
             });
         });
 
-
+        setTimeout(successMessage, 6000);
+        function successMessage() {
+            $("#successMessage").fadeOut();
+            $("#successMessage1").fadeOut();
+        }
         function CancelBooking(ID)
         {
             if (confirm("Are you sure you want to Cancel Booking ...?"))
