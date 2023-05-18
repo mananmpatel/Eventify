@@ -16,19 +16,24 @@ namespace EventApplicationCore.Controllers
     [ValidateUserSession]
     public class CustomerController : Controller
     {
-        ILogin _ILogin;
-        IRegistration _IRegistration;
-        public CustomerController(ILogin ILogin, IRegistration IRegistration)
+        private ILogin _ILogin;
+        private IRegistration _IRegistration;
+        private IDashboard _IDashboard;
+        public CustomerController(ILogin ILogin, IRegistration IRegistration, IDashboard IDashboard)
         {
             _ILogin = ILogin;
             _IRegistration = IRegistration;
+            _IDashboard = IDashboard;
+
         }
 
 
         // GET: /<controller>/ Userinformation
-        public IActionResult Dashboard()
+        public IActionResult Dashboard(Registration Registration)
         {
-            return View();
+            var userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            DashboardModel customerdashboardmodel = _IDashboard.CustomerDashboard(userId);
+            return View(customerdashboardmodel);
         }
 
         [HttpGet]

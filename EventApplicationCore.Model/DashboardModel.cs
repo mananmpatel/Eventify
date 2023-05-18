@@ -9,5 +9,6 @@ namespace EventApplicationCore.Model
     public class DashboardModel
     {
         public AdminDashboardModel AdminDashboard { get; set; }
+        public CustomerDashboardModel CustomerDashBoard { get; set; }
     }
 }

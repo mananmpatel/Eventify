@@ -9,6 +9,7 @@ namespace EventApplicationCore.Interface
 {
     public interface IDashboard
     {
-        DashboardModel AdminDashboard(); 
+        DashboardModel AdminDashboard();
+        DashboardModel CustomerDashboard(int UserId);
     }
 }

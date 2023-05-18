@@ -54,6 +54,7 @@
     <Compile Include="City.cs" />
     <Compile Include="CompleteBookingModel.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="CustomerDashboardModel.cs" />
     <Compile Include="DashboardModel.cs" />
     <Compile Include="Dishtypes.cs" />
     <Compile Include="Equipment.cs" />
