@@ -17,48 +17,55 @@
             <form method="post" enctype="multipart/form-data" asp-controller="BookFood" asp-action="BookFood">
                 @Html.ValidationSummary()
                 @Html.AntiForgeryToken()
-                    <h3><span class="label label-info">Add Food Item</span></h3>
-                    <div class="form-group">
-                        <label class="control-label" asp-for="FoodType">Food Type</label>
-                        <input asp-for="FoodType" id="FoodType1" value="1" type="radio" />
-                        Veg
-                        <input asp-for="FoodType" id="FoodType2" value="2" type="radio" />
-                        Non-Veg
-                        <span asp-validation-for="FoodType" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" asp-for="MealType">Meal Type</label>
-                        <input asp-for="MealType" id="Radio1" value="1" type="radio" />
-                        Lunch
-                        <input asp-for="MealType" id="Radio2" value="2" type="radio" />
-                        Dinner
-                        <span asp-validation-for="MealType" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" asp-for="DishType">Dish Type</label>
-                        <select asp-for="DishType"
-                                class="form-control"
-                                asp-items="@(new SelectList(string.Empty,"ID", "Dishtype"))"></select>
-                        <span asp-validation-for="DishType" class="text-danger"></span>
-                    </div>
+                <h3><span class="label label-info">Select Food & Beverages</span></h3>
+                <div class="form-group">
+                    <label class="control-label" asp-for="FoodType">Food Type</label>
+                    <input asp-for="FoodType" id="FoodType1" value="1" type="radio" />
+                    Veg
+                    <input asp-for="FoodType" id="FoodType2" value="2" type="radio" />
+                    Non-Veg
+                    <span asp-validation-for="FoodType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="MealType">Meal Type</label>
+                    <input asp-for="MealType" id="Radio1" value="1" type="radio" />
+                    Lunch
+                    <input asp-for="MealType" id="Radio2" value="2" type="radio" />
+                    Dinner
+                    <span asp-validation-for="MealType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="DishType">Dish Type</label>
+                    <select asp-for="DishType"
+                            class="form-control"
+                            asp-items="@(new SelectList(string.Empty,"ID", "Dishtype"))"></select>
+                    <span asp-validation-for="DishType" class="text-danger"></span>
+                </div>
 
-                    <div class="form-group">
-                        @Html.ValidationSummary(true)
-                        @for (int i = 0; i < Model.FoodList.Count(); i++)
-                        {
-                            <input asp-for="@Model.FoodList[i].FoodChecked" type="checkbox" />
-                            <label asp-for="@Model.FoodList[i].FoodID">@Model.FoodList[i].FoodName (Rs. @Model.FoodList[i].FoodCost)</label>
-                            <input type="hidden" asp-for="@Model.FoodList[i].FoodID" />
-                            <input type="hidden" asp-for="@Model.FoodList[i].FoodName" />
-                            <br />
-                        }
-                    </div>
+                <div class="form-group">
+                    @Html.ValidationSummary(true)
+                    @for (int i = 0; i < Model.FoodList.Count(); i++)
+                    {
+                        <input asp-for="@Model.FoodList[i].FoodChecked" type="checkbox" />
+                        <label asp-for="@Model.FoodList[i].FoodID">@Model.FoodList[i].FoodName (Rs. @Model.FoodList[i].FoodCost)</label>
+                        <input type="hidden" asp-for="@Model.FoodList[i].FoodID" />
+                        <input type="hidden" asp-for="@Model.FoodList[i].FoodName" />
+                        <br />
+                    }
+                </div>
 
-                    <div class="form-actions">
-                        <input id="Submit" type="submit" class="btn btn-success" value="Book Food" />
-                        <input id="Cancel" type="button" class="btn btn-success" value="Cancel" />
-                    </div>
+                <div class="form-actions">
+                    <input id="Submit" type="submit" class="btn btn-success" value="Book Food" />
+                    <input id="Cancel" type="button" class="btn btn-success" value="Cancel" />
+                </div>
             </form>
+            @if (TempData["TotalAmount"] != null)
+            {
+                <div class="mt-3">
+                    <label class="control-label">Estimated Total Amount</label>
+                    <input readonly="readonly" type="text" class="form-control" value="@TempData["TotalAmount"]" />
+                </div>
+            }
         </div>
         <div class="col-7">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -95,27 +102,23 @@
         </div>
     </div>
 </div>
- 
+
 <script type="text/javascript">
     $("#carouselExampleIndicators .carousel-inner .carousel-item:first-child").addClass("active");
-    $(document).ready(function ()
-    {
-        $.getJSON('@Url.Content("~/")' + "BookFood/BindDishtype", function (data)
-        {
+    $(document).ready(function () {
+        $.getJSON('@Url.Content("~/")' + "BookFood/BindDishtype", function (data) {
             var items = '';
             items += "<option value='" + "" + "'>" + "----Select----" + "</option>";
             $("#DishType").empty();
-            $.each(data, function (i, subcategory)
-            {
-             items += "<option value='" + subcategory.ID + "'>" + subcategory.Dishtype + "</option>";
+            $.each(data, function (i, subcategory) {
+                items += "<option value='" + subcategory.ID + "'>" + subcategory.Dishtype + "</option>";
 
             });
             $('#DishType').html(items);
 
-               if ('@Model.DishType' !='')
-               {
-                   $('#DishType').val('@Model.DishType');
-               }
+            if ('@Model.DishType' != '') {
+                $('#DishType').val('@Model.DishType');
+            }
         });
     });
 </script>

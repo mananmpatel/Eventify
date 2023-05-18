@@ -11,14 +11,16 @@ namespace EventApplicationCore.Controllers
     [ValidateUserSession]
     public class BookFlowerController : Controller
     {
-        IBookFlower _IBookFlower;
-        IFlower _IFlower;
-        IBookingVenue _IBookingVenue;
-        public BookFlowerController(IBookFlower IBookFlower, IFlower IFlower , IBookingVenue IBookingVenue)
+        private IBookFlower _IBookFlower;
+        private IFlower _IFlower;
+        private IBookingVenue _IBookingVenue;
+        private ITotalbilling _ITotalBilling;
+        public BookFlowerController(IBookFlower IBookFlower, IFlower IFlower, IBookingVenue IBookingVenue, ITotalbilling ITotalBilling)
         {
             _IBookFlower = IBookFlower;
             _IFlower = IFlower;
             _IBookingVenue = IBookingVenue;
+            _ITotalBilling = ITotalBilling;
         }
 
 
@@ -53,6 +55,7 @@ namespace EventApplicationCore.Controllers
                 {
                     var result = 0;
                     var validateChecked = 0;
+                    BookingFlower objbookingflower = null;
 
                     for (int i = 0; i < bookingflower.FlowerList.Count(); i++)
                     {
@@ -60,7 +63,7 @@ namespace EventApplicationCore.Controllers
                         {
                             validateChecked = 1;
 
-                            BookingFlower objbookingflower = new BookingFlower()
+                            objbookingflower = new BookingFlower()
                             {
                                 FlowerID = Convert.ToInt32(bookingflower.FlowerList[i].FlowerID),
                                 BookingID = Convert.ToInt32(HttpContext.Session.GetInt32("BookingID")),
@@ -88,6 +91,8 @@ namespace EventApplicationCore.Controllers
                         ModelState.Clear();
                         TempData["BookingFlowerMessage"] = "Flower Booked Successfully";
                         TempData["BookingCompleted"] = "Event Booking Completed";
+                        var TotalAmount = _ITotalBilling.TotalAmount(objbookingflower.BookingID);
+                        TempData["TotalAmount"] = TotalAmount;
                         //return View("Success");
                         return RedirectToAction("AllBookings", "ShowAllBooking");
                     }

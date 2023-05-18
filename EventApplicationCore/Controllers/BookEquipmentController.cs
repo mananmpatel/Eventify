@@ -3,6 +3,7 @@ using EventApplicationCore.Interface;
 using EventApplicationCore.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Semantics;
 using System;
 using System.Linq;
 
@@ -13,10 +14,13 @@ namespace EventApplicationCore.Controllers
     {
         private IEquipment _IEquipment;
         private IBookEquipment _IBookEquipment;
-        public BookEquipmentController(IEquipment IEquipment , IBookEquipment IBookEquipment)
+        private ITotalbilling _ITotalBilling;
+        public BookEquipmentController(IEquipment IEquipment , IBookEquipment IBookEquipment, ITotalbilling ITotalBilling)
         {
             _IEquipment = IEquipment;
             _IBookEquipment = IBookEquipment;
+            _ITotalBilling = ITotalBilling;
+
         }
 
 
@@ -45,6 +49,7 @@ namespace EventApplicationCore.Controllers
             {
                 var result = 0;
                 var validateChecked = 0;
+                BookingEquipment bk = null;
 
                 if (!ModelState.IsValid)
                 {
@@ -57,14 +62,13 @@ namespace EventApplicationCore.Controllers
                     {
                         validateChecked = 1;
 
-                        BookingEquipment bk = new BookingEquipment()
+                        bk = new BookingEquipment()
                         {
                             EquipmentID = Convert.ToInt32(BookingEquipment.EquipmentList[i].EquipmentID),
                             BookingID = Convert.ToInt32(HttpContext.Session.GetInt32("BookingID")),
                             Createdby = Convert.ToInt32(HttpContext.Session.GetString("UserID")),
                             CreatedDate = DateTime.Now,
                             BookingEquipmentID = 0,
-
                         };
                         result = _IBookEquipment.BookEquipment(bk);
                     }
@@ -76,10 +80,12 @@ namespace EventApplicationCore.Controllers
                 }
 
                 SetSlider();
-
+                
                 if (result > 0)
                 {
                     TempData["BookingEquipmentMessage"] = "Equipment Booked Successfully";
+                    var TotalAmount = _ITotalBilling.TotalAmount(bk.BookingID);
+                    TempData["TotalAmount"] = TotalAmount;
                     //return View("Success");
                     return RedirectToAction("BookFood","BookFood");
                 }

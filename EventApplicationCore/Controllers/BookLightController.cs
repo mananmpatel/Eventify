@@ -11,13 +11,15 @@ namespace EventApplicationCore.Controllers
     [ValidateUserSession]
     public class BookLightController : Controller
     {
-        IBookingLight _IBookingLight;
-        ILight _ILight;
+        private IBookingLight _IBookingLight;
+        private ILight _ILight;
+        private ITotalbilling _ITotalBilling;
 
-        public BookLightController(IBookingLight IBookingLight, ILight ILight)
+        public BookLightController(IBookingLight IBookingLight, ILight ILight, ITotalbilling ITotalBilling)
         {
             _IBookingLight = IBookingLight;
             _ILight = ILight;
+            _ITotalBilling = ITotalBilling;
         }
 
         [HttpGet]
@@ -52,6 +54,7 @@ namespace EventApplicationCore.Controllers
                 {
                     var result = 0;
                     var validateChecked = 0;
+                    BookingLight objbookinglight = null;
 
                     for (int i = 0; i < bookinglight.LightList.Count(); i++)
                     {
@@ -60,7 +63,7 @@ namespace EventApplicationCore.Controllers
                             validateChecked = 1;
 
 
-                            BookingLight objbookinglight = new BookingLight()
+                            objbookinglight = new BookingLight()
                             {
                                 LightType = bookinglight.LightType,
                                 LightIDSelected = Convert.ToInt32(bookinglight.LightList[i].LightID),
@@ -84,6 +87,8 @@ namespace EventApplicationCore.Controllers
                     {
                         ModelState.Clear();
                         TempData["BookingLightingMessage"] = "Lighting Booked Successfully";
+                        var TotalAmount = _ITotalBilling.TotalAmount(objbookinglight.BookingID);
+                        TempData["TotalAmount"] = TotalAmount;
                         //return View("Success");
                         return RedirectToAction("BookFlower", "BookFlower");
                     }

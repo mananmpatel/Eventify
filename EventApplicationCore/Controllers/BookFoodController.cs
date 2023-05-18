@@ -11,14 +11,16 @@ namespace EventApplicationCore.Controllers
     [ValidateUserSession]
     public class BookFoodController : Controller
     {
-        IBookFood _IBookFood;
-        IFood _IFood;
-        IDishtypes _IDishtypes;
-        public BookFoodController(IBookFood IBookFood, IDishtypes IDishtypes, IFood IFood)
+        private IBookFood _IBookFood;
+        private IFood _IFood;
+        private IDishtypes _IDishtypes;
+        private ITotalbilling _ITotalBilling;
+        public BookFoodController(IBookFood IBookFood, IDishtypes IDishtypes, IFood IFood, ITotalbilling ITotalBilling)
         {
             _IBookFood = IBookFood;
             _IFood = IFood;
             _IDishtypes = IDishtypes;
+            _ITotalBilling = ITotalBilling;
         }
 
      
@@ -55,6 +57,7 @@ namespace EventApplicationCore.Controllers
                 {
                     var result = 0;
                     var validateChecked = 0;
+                    BookingFood objFood = null;
 
                     for (int i = 0; i < bookingfood.FoodList.Count(); i++)
                     {
@@ -62,7 +65,7 @@ namespace EventApplicationCore.Controllers
                         {
                             validateChecked = 1;
 
-                            BookingFood objFood = new BookingFood()
+                            objFood = new BookingFood()
                             {
                                 FoodType = bookingfood.FoodType,
                                 MealType = bookingfood.MealType,
@@ -87,6 +90,8 @@ namespace EventApplicationCore.Controllers
                     {
                         ModelState.Clear();
                         TempData["BookingFoodMessage"] = "Food Booked Successfully";
+                        var TotalAmount = _ITotalBilling.TotalAmount(objFood.BookingID);
+                        TempData["TotalAmount"] = TotalAmount;
                         //return View("Success");
                         return RedirectToAction("BookLight", "BookLight");
                     }

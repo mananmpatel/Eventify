@@ -15,10 +15,12 @@ namespace EventApplicationCore.Controllers
     {
         private IBookingVenue _IBookingVenue;
         private IVenue _IVenue;
-        public BookingController(IBookingVenue IBookingVenue , IVenue IVenue)
+        private ITotalbilling _ITotalBilling;
+        public BookingController(IBookingVenue IBookingVenue, IVenue IVenue, ITotalbilling ITotalbilling)
         {
             _IBookingVenue = IBookingVenue;
             _IVenue = IVenue;
+            _ITotalBilling = ITotalbilling;
         }
 
         [HttpGet]
@@ -81,9 +83,10 @@ namespace EventApplicationCore.Controllers
                     SetSlider();
                     ModelState.Clear();
                     TempData["BookingMessage"] = "Venue Booked Successfully";
-                    return View("Success");
+                    var TotalAmount = _ITotalBilling.TotalAmount(BV.BookingID);
+                    TempData["TotalAmount"] = TotalAmount;
                     //return View("Success");
-                    return RedirectToAction("Equipment","BookEquipment");
+                    return RedirectToAction("Equipment", "BookEquipment");
                 }
                 else
                 {
@@ -166,9 +169,9 @@ namespace EventApplicationCore.Controllers
             }
         }
 
-      
 
-       
+
+
         [NonAction]
         private void SetSlider()
         {
