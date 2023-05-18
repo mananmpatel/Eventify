@@ -9,6 +9,7 @@ namespace EventApplicationCore.Interface
 {
     public interface ITotalbilling
     {
+        int TotalAmount(int? BookingID);
         BillingModel GetBillingDetailsbyBookingNo(string BookingNo);
         CompleteBookingModel ShowCompleteBookingDetailsbyBookingNo(string BookingNo);
     }

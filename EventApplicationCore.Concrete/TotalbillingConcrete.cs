@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EventApplicationCore.Model;
+using static System.Collections.Specialized.BitVector32;
+using System.Net.Http;
+using System.Web;
 
 namespace EventApplicationCore.Concrete
 {
@@ -17,7 +20,49 @@ namespace EventApplicationCore.Concrete
             _context = context;
         }
 
+        public int TotalAmount(int? BookingID) 
+        {
+            var BookingDT = (from BD in _context.BookingDetails
+                             where BD.BookingID == BookingID
+                             select new { BD.BookingNo, BD.BookingDate, BD.BookingID }).Single();
 
+            var GuestCount = (from Bv in _context.BookingVenue
+                              where Bv.BookingID == BookingID
+                              select Bv.GuestCount);
+
+            int? TotalVenueCost = (from BD in _context.BookingVenue 
+                                   join Vn in _context.Venue on BD.VenueID equals Vn.VenueID
+                                   where BD.BookingID == BookingDT.BookingID 
+                                   select Vn.VenueCost).Sum();
+            int? TotalEquipmentCost = (from BD in _context.BookingEquipment join Eq in _context.Equipment on BD.EquipmentID equals Eq.EquipmentID where BD.BookingID == BookingDT.BookingID select Eq.EquipmentCost).Sum();
+
+            //var tempTotalVenue = (from BD in _context.BookingVenue join Vn in _context.Venue on BD.VenueID equals Vn.VenueID where BD.BookingID == BookingDT.BookingID select Vn.VenueCost).Sum();
+            //int? TotalVenueCost = tempTotalVenue != null && tempTotalVenue > 0 ? tempTotalVenue : 0;
+
+            //var TempSum = (from BD in _context.BookingEquipment join Eq in _context.Equipment on BD.EquipmentID equals Eq.EquipmentID where BD.BookingID == BookingDT.BookingID select Eq.EquipmentCost).Sum();
+
+            //int? TotalEquipmentCost = TempSum!=null && TempSum>0?TempSum:0;
+
+            int? TotalFoodCost = (from BD in _context.BookingFood join Fo in _context.Food on BD.DishName equals Fo.FoodID where BD.BookingID == BookingDT.BookingID select Fo.FoodCost).Sum();
+
+            int? TotalFlowerCost = (from BD in _context.BookingFlower
+                                        join Fl in _context.Flower on BD.FlowerID equals Fl.FlowerID
+                                        where BD.BookingID == BookingDT.BookingID
+                                        select Fl.FlowerCost).Sum();
+
+            int? TotalLightCost = (from BD in _context.BookingLight
+                                       join Lg in _context.Light on BD.LightIDSelected equals Lg.LightID
+                                       where BD.BookingID == BookingDT.BookingID
+                                       select Lg.LightCost).Sum();
+
+
+            int totalAmount = Convert.ToInt32(TotalVenueCost) +
+                               Convert.ToInt32(TotalEquipmentCost) +
+                               (Convert.ToInt32(TotalFoodCost) * GuestCount.Single())+
+                               Convert.ToInt32(TotalFlowerCost) +
+                               Convert.ToInt32(TotalLightCost);
+            return totalAmount;
+        }
         public BillingModel GetBillingDetailsbyBookingNo(string BookingNo)
         {
             if (BookingNo != null)
@@ -75,7 +120,6 @@ namespace EventApplicationCore.Concrete
                     TotalLightCost = TotalLightCost,
                     TotalAmount = TotalAmount
                 };
-
                 return billingmodel;
             }
 
